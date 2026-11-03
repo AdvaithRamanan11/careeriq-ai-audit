@@ -1,30 +1,31 @@
 # Decisions log
 
-Every methods choice made before the preregistration goes here with its reason. Each entry is marked **Decided** (Advaith signed off) or **Proposed** (needs his sign-off). The preregistration is drafted from this file.
+Every methods choice made before the preregistration goes here with its reason. Each entry is marked **Decided** (Advaith signed off) or **Open** (still needs a decision). The preregistration is drafted from this file. Former proposal numbers (P#) are kept in brackets so earlier notes still make sense.
 
 ## Decided
 
 | # | Date | Decision | Why |
 |---|---|---|---|
 | D1 | 2026-11-02 | A 4-year school with no admission rate goes in **Open admission** if Scorecard's `OPENADMP` = 1 (open admissions policy). Otherwise (`OPENADMP` = 2 or blank) it is **excluded**. | CareerIQ gives these schools tier 3 by default, which would wrongly put open-admission schools in "Above average." Of 270 four-year CareerIQ schools with no rate, 186 have `OPENADMP` = 1 and 84 are excluded. |
-| D3 | 2026-11-02 | Each chatbot is represented by the API model closest to its **free consumer app's default**: what a student actually gets. Proposed IDs and sources are in `runners/models.json` (see P9). | The study is about the advice students get. Most students use the free apps. |
 | D2 | 2026-11-02 | Answer-key release: field-of-study file `_10152026`, institution file `_11022026`, checksums in `data/raw/MANIFEST.json`. | Pins the exact release so results can be reproduced. |
+| D3 | 2026-11-02 | Each chatbot is represented by the API model closest to its **free consumer app's default**: what a student actually gets. | The study is about the advice students get. Most students use the free apps. |
+| D4 [P1] | 2026-11-02 | **Debt answer key** = `DEBT_ALL_STGP_EVAL_MDN` (median federal loans borrowed at this school). `DEBT_ALL_STGP_ANY_MDN` (loans from any school) is a sensitivity check. | The question asks about debt from attending *this* school. |
+| D5 [P2] | 2026-11-02 | **School groups** use CareerIQ's own `tier` and `schoolType` from `colleges.json` at the baseline commit. | That's how CareerIQ sees each school. **0 of 1,522** four-year schools have a tier that differs from the Nov 2 admission rate, so this changes no group. |
+| D6 [P3] | 2026-11-02 | **Community-college profiles are associate's rows. Four-year-group profiles are bachelor's rows.** | Matches what each school type mainly awards. |
+| D7 [P4] | 2026-11-02 | **Crosswalk:** only rows marked `proposed`, plus the `judgment` rows Advaith approves, go into the sample (`crosswalk/review_sheet.csv`). | Every mapping is reviewed before sampling (PRD step 2). |
+| D8 [P5] | 2026-11-02 | **Elite Texas shortfall:** only 4 usable Elite Texas rows exist. Take what exists and document the shortfall. | The PRD says "where enough exist." |
+| D9 [P6] | 2026-11-02 | **Earnings bands:** rank every field nationally (all 4-digit CIPs at that credential level) by `EARN_MDN_1YR_NAT` and split into thirds, separately for associate's and bachelor's. Bachelor's: bottom ≤ $40,871 < middle ≤ $55,930 < top. Associate's: bottom ≤ $34,704 < middle ≤ $44,660 < top. | Doesn't depend on crosswalk choices. Gives community colleges all three bands. |
+| D10 [P7] | 2026-11-02 | **At most one profile per school within a cell.** Aim for 5 Texas + 5 non-Texas per cell, and fill a short side from the other. | Keeps one big school from supplying several profiles in a cell. |
+| D11 [P9] | 2026-11-02 | **Models:** ChatGPT = `gpt-5.6-luna`, Gemini = `gemini-3.5-flash-lite`, Claude = `claude-sonnet-5-5` (sources in `runners/models.json`). **Condition: before the full run, Advaith confirms in each free app which model it shows.** If an app shows something different, this entry gets updated before any data is collected. | Follows D3. Limitations to report: Gemini's free "Auto" mode sometimes routes to bigger models, which the API can't copy. OpenAI's own pages disagree (one release note says "GPT-6 Luna"). |
+| D12 [P10] | 2026-11-02 | **Call settings:** one user message, no system prompt, no tools (so no web search), provider defaults for sampling and reasoning. Claude's API requires `max_tokens`, set to 16,000. **Claude's automatic refusal fallback is off.** | PRD "Settings." Refusals are a result, not something to paper over with another model. |
+| D13 [P11] | 2026-11-02 | **Pilot set:** the first profile from 10 of the 15 cells, picked with seed 2026. Pilot answers go to `runs/pilot/` and are **not** used in the analysis. | Tests the pipeline across school types and bands without using pilot answers as data. |
 
-## Proposed (needs Advaith's sign-off)
+## Open
 
-| # | Decision | Why | Alternative |
-|---|---|---|---|
-| P1 | Debt answer key = `DEBT_ALL_STGP_EVAL_MDN` (federal loans borrowed at this school). `DEBT_ALL_STGP_ANY_MDN` (loans from any school) is a sensitivity check. | The question asks about debt from attending *this* school. | Use ANY as primary. It's bigger for transfer students. |
-| P2 | School groups use CareerIQ's own `tier` and `schoolType` from `colleges.json` at the baseline commit. | That's how CareerIQ sees each school. A check found **0 of 1,522** four-year schools whose tier differs from the Nov 2 institution file's admission rate, so this choice doesn't change any group. | Recompute from `ADM_RATE` (same result today). |
-| P3 | Community-college profiles are **associate's** rows. Four-year-group profiles are **bachelor's** rows. | Matches what each school type mainly awards. Keeps the community-college row comparable. | Allow both credentials in any group. |
-| P4 | Crosswalk: only rows marked `proposed` plus the `judgment` rows Advaith approves go into the sample. See `crosswalk/review_sheet.csv`. | — | — |
-| P6 | **Earnings bands:** rank every field nationally (all 4-digit CIPs at that credential level, not just mapped ones) by `EARN_MDN_1YR_NAT` and split into thirds, done separately for associate's and bachelor's. Bachelor's cutoffs: bottom ≤ $40,871 < middle ≤ $55,930 < top. Associate's: bottom ≤ $34,704 < middle ≤ $44,660 < top. | Doesn't depend on crosswalk choices. Banding within credential gives community colleges all three bands, instead of putting almost every associate's field in "bottom." | Weight fields by number of graduates. Or compute thirds only over mapped fields. |
-| P7 | **At most one profile per school within a cell.** Within a cell: 5 Texas + 5 non-Texas when possible, and the short side gets filled from the other. | Keeps one big school from supplying several profiles in a cell. | No school limit. |
-| P8 | **Field cap per cell: undecided.** A pure random draw (the PRD default) lets big fields dominate: in the draft, biology is 34 of 150 profiles and Community college × Top is 10 nursing programs. A cap of 3 per field per cell spreads the sample out, but some cells may not fill. Re-run both ways after the crosswalk is final, then decide. | H5 compares error *by field*, which needs several fields. | Keep pure random and report the field mix. |
-| P9 | **Models:** ChatGPT = `gpt-5.6-luna`, Gemini = `gemini-3.5-flash-lite`, Claude = `claude-sonnet-5-5` (sources in `runners/models.json`, checked 2026-11-02). **Before the full run, Advaith confirms in each free app** which model it shows. | Follows D3. Caveats: OpenAI's pages disagree (one Oct 7 release note says "GPT-6 Luna"). Gemini's free app uses "Auto," which sends most prompts to Flash-Lite but some to Flash or Pro; the API can't copy that routing, so this is a limitation. No Anthropic page says "Sonnet 5.5 is the Free default" in those words. | — |
-| P10 | **Call settings:** one user message, no system prompt, no tools (so no web search), provider defaults for sampling and reasoning. Claude's API requires `max_tokens`, set to 16,000 so answers aren't cut off. **Claude's automatic refusal fallback is off,** because it would quietly answer with a different model; refusals are a result. | PRD "Settings." | — |
-| P11 | **Pilot set:** the first profile from 10 of the 15 cells, picked with seed 2026 (`run_chatbots.py --pilot`). Pilot answers go to `runs/pilot/` and are **not** used in the analysis. The full run asks every profile fresh. | Tests the pipeline across school types and bands without using pilot answers as data. | — |
-| P5 | Elite schools: the "about half Texas" target can't be met. There are only 4 usable Elite Texas rows (all at CareerIQ schools). Take what exists and document the shortfall. | The PRD says "where enough exist." | Drop the Texas target for Elite only (same result). |
+| # | Question | Status |
+|---|---|---|
+| O1 [P8] | **Field cap per cell.** A pure random draw lets big fields dominate: in the draft, biology is 34 of 150 profiles and Community college × Top is 10 nursing programs. A cap of 3 per field per cell spreads the sample out, but some cells may not fill. | Decide after the crosswalk is final, by comparing both versions' field mix and cell fill. |
+| O2 | **Crosswalk judgment calls** (29 rows). Suggested rule, so the mapping doesn't rest on anyone's taste: *map a field only to a CareerIQ job that the official NCES/BLS CIP-to-SOC crosswalk links to it. If several are linked, use the one most typical for new graduates. If none is linked, exclude the field.* Each judgment row now has a `recommendation` that applies this rule. | Waiting on Advaith's review of `crosswalk/review_sheet.csv` (PRD step 2: "Advaith has reviewed every mapping"). |
 
 ## API cost estimate (checked 2026-11-02, to confirm after the pilot)
 
@@ -42,7 +43,7 @@ Input costs are under $0.10 total. The pilot logs real token counts, so the esti
 ## Facts found in the data that the write-up must mention
 
 - **Debt is a borrowers-only median.** `DEBT_ALL_STGP_EVAL_MDN` is the median among graduates who took federal Direct Loans. It leaves out students who borrowed nothing, private loans, Parent PLUS loans, and capitalized interest. Scorecard's documentation says the figure "may often be lower than the amount owed upon completion." A chatbot that answers "the average graduate owes X," counting non-borrowers as $0, is answering a different question. This belongs in the rubric discussion and the limitations.
-- **$27,000 is the most common median-debt value.** That's the federal Direct Loan cap for dependent undergraduates, and CareerIQ's `calculateLoan` uses the same cap. So the answer key is capped, while CareerIQ's estimate (full net price × years) is not. That's directly relevant to H7.
+- **$27,000 is the most common median-debt value.** That's the federal Direct Loan cap for dependent undergraduates, so the answer key tends to top out there. CareerIQ's estimate (full net price × years) has no such cap. That's directly relevant to H7.
 - **The earnings cohorts are older than they sound.** 1-year earnings cover AY2020-21 and AY2021-22 graduates, measured in CY2022–23 and inflation-adjusted to 2024 dollars. 5-year earnings cover AY2016-17 and AY2017-18 graduates.
 - **Earnings exclude** graduates enrolled in school during the measurement year (e.g. med school, law school) and those who weren't working. This matters for pre-professional majors like biology, psychology and political science.
 - **Fields are 4-digit CIP codes,** so related programs at one school are pooled.

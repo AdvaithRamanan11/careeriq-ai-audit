@@ -79,7 +79,7 @@ def main() -> int:
     sheet["advaith_decision"] = ""
     cols = ["cip4", "cip_name", "prompt_major", "status", "major_id", "job_id", "job_title", "official_link",
             "soc", "soc_title", "soc_is_proxy", "bls_mean_wage", "usable_assoc", "usable_bach",
-            "notes", "advaith_decision"]
+            "notes", "recommendation", "advaith_decision"]
     sheet[cols].to_csv(OUT, index=False)
 
     # Coverage: how much of the usable data does the crosswalk reach?

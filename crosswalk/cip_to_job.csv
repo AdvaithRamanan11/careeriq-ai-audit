@@ -1,112 +1,112 @@
-cip4,cip_name,prompt_major,major_id,job_id,status,notes,recommendation
-5138,"Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing.",nursing,nursing,rn,proposed,"Nursing major's RN job. healthcare.registered_nurse has the same SOC (29-1141) and the same wage ($101,420), so the choice doesn't change the number.",
-1101,"Computer and Information Sciences, General.",computer and information sciences,computer_science,software_engineer,proposed,Officially linked. Most typical first job for a CS or CIS grad.,
-1107,Computer Science.,computer science,computer_science,software_engineer,proposed,Officially linked.,
-1409,Computer Engineering.,computer engineering,computer_science,software_engineer,proposed,"Software developer is the only CareerIQ job the official crosswalk links. The Engineering major has no computer engineer job, so this uses the CS major.",
-1110,Computer/Information Technology Administration and Management.,information technology,computer_science,cybersecurity_analyst,judgment,"Field pools network admin, IT management and cybersecurity. Official links: cybersecurity_analyst, devops_engineer (network admin SOC), it_manager. it_manager is a senior role.",approve (officially linked)
-1104,Information Science/Studies.,information science,computer_science,software_engineer,judgment,"Official links: software_engineer, it_manager, ux_designer, product_manager. Alternative: exclude.",approve (officially linked)
-1108,Computer Software and Media Applications.,computer software and media applications,computer_science,software_engineer,judgment,"Official links: software_engineer, ux_designer, graphic_designer, animator, game_designer. Pools web, game and media programs.",approve (officially linked)
-1109,Computer Systems Networking and Telecommunications.,computer networking,computer_science,cybersecurity_analyst,judgment,"Official links: cybersecurity_analyst, software_engineer, it_manager. devops_engineer uses the network admin SOC but is not officially linked here.",approve (officially linked)
-2705,Statistics.,statistics,computer_science,data_scientist,judgment,Statistics is not one of CareerIQ's 12 majors. data_scientist is officially linked (also actuary). Alternative: exclude.,approve (officially linked)
-5203,Accounting and Related Services.,accounting,business,accountant,proposed,Officially linked. PRD's own example.,
-5208,Finance and Financial Management Services.,finance,business,financial_analyst,proposed,Officially linked. finance_economics.investment_analyst uses the same SOC (13-2051); its wage may differ through a proxy premium.,
-5214,Marketing.,marketing,business,marketing_manager,proposed,"Officially linked and what a marketing student would pick in CareerIQ. It's a manager title, so the 0.62 entry discount is doing a lot of work here (tests H5). Alternative: social_sciences.market_researcher, a more typical first job.",
-5202,"Business Administration, Management and Operations.",business administration,business,operations_manager,judgment,"Largest business field. Official links include most business jobs, so there's no single typical job. Alternatives: management_consultant, hr_specialist, sales_manager. Worth a crosswalk sensitivity check.",approve (officially linked; run crosswalk sensitivity with management_consultant)
-5201,"Business/Commerce, General.",business,business,operations_manager,judgment,Same issue as 5202. Keep the two consistent.,approve (officially linked; keep consistent with 5202)
-5210,Human Resources Management and Services.,human resources management,social_sciences,hr_specialist,judgment,"Officially linked. HR specialist is the typical first job but sits under the Social Sciences major. Alternative: business.hr_manager, which a business student would pick.",approve (officially linked; typical first HR job)
-5213,Management Sciences and Quantitative Methods.,management science,business,management_consultant,judgment,"Official links: management_consultant, operations_manager, data_scientist, actuary.",approve (officially linked)
-5206,Business/Managerial Economics.,business economics,finance_economics,economist,judgment,"Official links: economist, management_consultant. Alternative: business.financial_analyst (not officially linked).",approve (officially linked; consistent with 4506)
-5212,Management Information Systems and Services.,management information systems,computer_science,it_manager,judgment,"it_manager is the only official link, but it's a senior role. Alternative: exclude.",approve (only officially linked job; note it is a senior role)
-4506,Economics.,economics,finance_economics,economist,judgment,"Officially linked, but the BLS economist SOC mostly employs people with graduate degrees. Alternative: business.financial_analyst, a more typical first job for a BA, but not officially linked. Relevant to H5.","approve economist (officially linked); financial_analyst as sensitivity check only, since it is not officially linked"
-1419,Mechanical Engineering.,mechanical engineering,engineering,mechanical_engineer,proposed,Officially linked.,
-1408,Civil Engineering.,civil engineering,engineering,civil_engineer,proposed,Officially linked.,
-1410,"Electrical, Electronics, and Communications Engineering.",electrical engineering,engineering,electrical_engineer,proposed,Officially linked.,
-1407,Chemical Engineering.,chemical engineering,engineering,chemical_engineer,proposed,Officially linked.,
-1405,Biomedical/Medical Engineering.,biomedical engineering,engineering,biomedical_engineer,proposed,Officially linked.,
-1435,Industrial Engineering.,industrial engineering,engineering,industrial_engineer,proposed,Officially linked.,
-1402,"Aerospace, Aeronautical, and Astronautical/Space Engineering.",aerospace engineering,engineering,aerospace_engineer,proposed,Officially linked.,
-1414,Environmental/Environmental Health Engineering.,environmental engineering,engineering,environmental_engineer,proposed,Officially linked.,
-1312,"Teacher Education and Professional Development, Specific Levels and Methods.",teacher education,education,elementary_teacher,proposed,"Officially linked. This field pools elementary, early childhood and secondary methods programs (hs_teacher is also linked). Elementary is the largest.",
-1313,"Teacher Education and Professional Development, Specific Subject Areas.",teacher education in a specific subject,education,hs_teacher,proposed,Officially linked.,
-1310,Special Education and Teaching.,special education,education,special_ed_teacher,proposed,Officially linked.,
-1301,"Education, General.",education,education,elementary_teacher,judgment,No official link besides professor. Alternative: exclude.,exclude (no official link)
-4407,Social Work.,social work,social_sciences,social_worker,proposed,"Officially linked. CareerIQ's social_worker uses the Healthcare Social Workers SOC, which may pay above typical BSW jobs.",
-4201,"Psychology, General.",psychology,social_sciences,psychologist,judgment,"psychologist is the only official link, but psychologists need a doctorate. The earnings are for BA grads who are working. This is exactly the 'one job stands in for a major' assumption, so keeping it tests what a student would see. Alternatives: market_researcher, hr_specialist, exclude.",approve (only officially linked job); sensitivity check with market_researcher and hr_specialist
-4227,Research and Experimental Psychology.,experimental psychology,social_sciences,psychologist,judgment,Same issue as 4201. Keep consistent.,approve (consistent with 4201)
-4228,"Clinical, Counseling and Applied Psychology.",clinical or counseling psychology,social_sciences,psychologist,judgment,Same issue as 4201. Keep consistent.,approve (consistent with 4201)
-4400,"Human Services, General.",human services,social_sciences,community_organizer,judgment,"Official links: community_organizer, nonprofit_manager.",approve (officially linked)
-4511,Sociology.,sociology,social_sciences,,judgment,"Fits the Social Sciences major, but no officially linked job except diplomat and lobbyist proxies. Leave the job blank to exclude, or pick one (e.g. nonprofit_manager, market_researcher).",exclude (only links are diplomat/lobbyist under a different major)
-4510,Political Science and Government.,political science,law,policy_analyst,judgment,"Officially linked, but it's a proxy (Political Scientists SOC, usually a graduate-level job). Many poli sci grads go to law school and so aren't in the earnings cohort.",approve (officially linked)
-4509,International Relations and National Security Studies.,international relations,law,policy_analyst,judgment,"Official links: policy_analyst, diplomat (proxy), lobbyist (proxy).",approve (officially linked)
-4405,Public Policy Analysis.,public policy,law,policy_analyst,proposed,Officially linked.,
-2203,Legal Support Services.,paralegal studies,law,paralegal,proposed,Officially linked. Mostly associate's programs.,
-0904,Journalism.,journalism,communications,journalist,proposed,Officially linked.,
-0909,"Public Relations, Advertising, and Applied Communication.",public relations and advertising,communications,pr_specialist,proposed,Officially linked.,
-0907,"Radio, Television, and Digital Communication.","radio, television and digital communication",communications,broadcast_journalist,proposed,Officially linked (proxy SOC same as journalist).,
-0901,Communication and Media Studies.,communication,communications,pr_specialist,judgment,"Official links: journalist, pr_specialist, editor, content_strategist, broadcast_journalist. No single typical job.",approve (officially linked)
-2313,Rhetoric and Composition/Writing Studies.,writing and rhetoric,communications,technical_writer,judgment,"Official links: technical_writer, editor, content_strategist.",approve (officially linked)
-0402,Architecture.,architecture,arts_design,architect,proposed,Officially linked. Licensure usually needs more schooling and experience.,
-5004,Design and Applied Arts.,design,arts_design,graphic_designer,judgment,"The 4-digit field pools graphic, interior, fashion and industrial design (all officially linked). Graphic design is the largest.",approve (officially linked)
-1003,Graphic Communications.,graphic communications,arts_design,graphic_designer,judgment,Only animator is officially linked. Graphic designer is the more typical job.,exclude (graphic_designer not officially linked)
-1909,Apparel and Textiles.,apparel and textiles,arts_design,fashion_designer,judgment,Officially linked. Alternative: exclude.,approve (officially linked)
-2601,"Biology, General.",biology,natural_sciences,biologist,proposed,Officially linked. Many biology grads go on to medical or graduate school and so aren't in the earnings cohort.,
-2602,"Biochemistry, Biophysics and Molecular Biology.",biochemistry,natural_sciences,biochemist,proposed,Officially linked.,
-4005,Chemistry.,chemistry,natural_sciences,chemist,proposed,Officially linked.,
-4008,Physics.,physics,natural_sciences,physicist,proposed,Officially linked. The BLS physicist SOC is mostly PhDs.,
-4006,Geological and Earth Sciences/Geosciences.,geology,natural_sciences,geoscientist,proposed,Officially linked.,
-0301,Natural Resources Conservation and Research.,environmental science and natural resources,natural_sciences,environmental_scientist,proposed,Officially linked. Includes Environmental Science (03.0104).,
-2607,Zoology/Animal Biology.,zoology,natural_sciences,zoologist,proposed,Officially linked.,
-0306,Wildlife and Wildlands Science and Management.,wildlife science,natural_sciences,zoologist,proposed,Officially linked.,
-2613,"Ecology, Evolution, Systematics, and Population Biology.",ecology,natural_sciences,biologist,judgment,"Official links: biologist, zoologist, epidemiologist.",approve (officially linked)
-2605,Microbiological Sciences and Immunology.,microbiology,natural_sciences,biologist,judgment,Officially linked. Alternative: exclude.,approve (officially linked)
-2615,Neurobiology and Neurosciences.,neuroscience,natural_sciences,biologist,judgment,"Officially linked, but heavily pre-med. Alternative: exclude.",approve (officially linked)
-5122,Public Health.,public health,natural_sciences,epidemiologist,judgment,"Officially linked, but epidemiologists usually need a master's. No Healthcare-major job fits a public health BA. Alternative: exclude.",approve (officially linked; note it is usually a master's-level job)
-2401,"Liberal Arts and Sciences, General Studies and Humanities.",,,,excluded,"Not one of CareerIQ's 12 majors. Large in community colleges (455 associate's rows), so excluding it is a coverage limitation to report.",
-4301,Criminal Justice and Corrections.,,,,excluded,Not one of CareerIQ's 12 majors. Only proxy links (government_official = Compliance Officers SOC).,
-3105,"Sports, Kinesiology, and Physical Education/Fitness.",,,,excluded,Not one of CareerIQ's 12 majors.,
-2301,"English Language and Literature, General.",,,,excluded,Not one of CareerIQ's 12 majors. Only teaching is officially linked.,
-5109,"Allied Health Diagnostic, Intervention, and Treatment Professions.",,,,excluded,"Radiography, sonography, respiratory therapy etc. CareerIQ has no matching job; physician_assistant needs a master's.",
-5007,Fine and Studio Arts.,,,,excluded,"Official links are art_director and animator, both poor fits for a new grad. Alternative: map to arts_design.",
-5401,History.,,,,excluded,Not one of CareerIQ's 12 majors.,
-5107,Health and Medical Administrative Services.,,,,excluded,"Only nurse_manager (Medical and Health Services Managers) is a plausible link, and it's a senior role.",
-5005,Drama/Theatre Arts and Stagecraft.,,,,excluded,No matching CareerIQ job.,
-5009,Music.,,,,excluded,No matching CareerIQ job.,
-2701,Mathematics.,,,,excluded,"Not one of CareerIQ's 12 majors. Official links: data_scientist, ml_engineer. Alternative: map like Statistics.",
-5100,"Health Services/Allied Health/Health Sciences, General.",,,,excluded,No official link to any CareerIQ job.,
-1907,"Human Development, Family Studies, and Related Services.",,,,excluded,"Weak links only (psychologist, community_organizer, ux_researcher).",
-3099,"Multi/Interdisciplinary Studies, Other.",,,,excluded,No official link.,
-5106,Dental Support Services and Allied Professions.,,,,excluded,Dental hygiene etc. dentist is a doctoral job.,
-5006,Film/Video and Photographic Arts.,,,,excluded,No matching CareerIQ job.,
-4504,Criminology.,,,,excluded,Not one of CareerIQ's 12 majors.,
-5108,Allied Health and Medical Assisting Services.,,,,excluded,No matching CareerIQ job.,
-5102,Communication Disorders Sciences and Services.,,,,excluded,No matching CareerIQ job (speech-language pathology needs a master's).,
-4502,Anthropology.,,,,excluded,No officially linked job besides proxies.,
-1609,"Romance Languages, Literatures, and Linguistics.",,,,excluded,Not one of CareerIQ's 12 majors.,
-5209,Hospitality Administration/Management.,,,,excluded,No matching CareerIQ job.,
-0109,Animal Sciences.,,,,excluded,No matching CareerIQ job.,
-5211,International Business.,,,,excluded,Only operations_manager is officially linked. Alternative: map like 5202.,
-0502,"Ethnic, Cultural Minority, Gender, and Group Studies.",,,,excluded,Not one of CareerIQ's 12 majors.,
-5110,Clinical/Medical Laboratory Science/Research and Allied Professions.,,,,excluded,No matching CareerIQ job.,
-2609,"Physiology, Pathology and Related Sciences.",,,,excluded,Heavily pre-med. Alternative: biologist.,
-3000,"Multi-/Interdisciplinary Studies, General.",,,,excluded,No official link.,
-4901,Air Transportation.,,,,excluded,No matching CareerIQ job.,
-0101,Agricultural Business and Management.,,,,excluded,No matching CareerIQ job.,
-5001,"Visual and Performing Arts, General.",,,,excluded,Too general.,
-4501,"Social Sciences, General.",,,,excluded,Too general.,
-3801,Philosophy.,,,,excluded,Not one of CareerIQ's 12 majors.,
-1601,"Linguistic, Comparative, and Related Language Studies and Services.",,,,excluded,Not one of CareerIQ's 12 majors.,
-5220,Construction Management.,,,,excluded,No matching CareerIQ job.,
-4304,Security Science and Technology.,,,,excluded,Mixed field; no clear CareerIQ job.,
-5207,Entrepreneurial and Small Business Operations.,,,,excluded,No single CareerIQ job.,
-1508,Mechanical Engineering Related Technologies/Technicians.,,,,excluded,Technician roles; no CareerIQ job.,
-1401,"Engineering, General.",,,,excluded,No specific engineering job.,
-3020,International/Globalization Studies.,,,,excluded,Not one of CareerIQ's 12 majors.,
-5115,Mental and Social Health Services and Allied Professions.,,,,excluded,Alternative: social_worker.,
-5123,Rehabilitation and Therapeutic Professions.,,,,excluded,PT and OT need graduate degrees.,
-5199,"Health Professions and Related Clinical Sciences, Other.",,,,excluded,No official link.,
-3019,Nutrition Sciences.,,,,excluded,No matching CareerIQ job.,
-4706,Vehicle Maintenance and Repair Technologies/Technicians.,,,,excluded,No matching CareerIQ job.,
-1510,Construction Engineering Technology/Technician.,,,,excluded,Technician roles.,
-3001,Biological and Physical Sciences.,,,,excluded,Too general.,
-5010,"Arts, Entertainment, and Media Management.",,,,excluded,No matching CareerIQ job.,
-5111,Health/Medical Preparatory Programs.,,,,excluded,Pre-professional; no job.,
+cip4,cip_name,prompt_major,major_id,job_id,status,notes,recommendation,reviewed
+5138,"Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing.",nursing,nursing,rn,proposed,"Nursing major's RN job. healthcare.registered_nurse has the same SOC (29-1141) and the same wage ($101,420), so the choice doesn't change the number.",,
+1101,"Computer and Information Sciences, General.",computer and information sciences,computer_science,software_engineer,proposed,Officially linked. Most typical first job for a CS or CIS grad.,,
+1107,Computer Science.,computer science,computer_science,software_engineer,proposed,Officially linked.,,
+1409,Computer Engineering.,computer engineering,computer_science,software_engineer,proposed,"Software developer is the only CareerIQ job the official crosswalk links. The Engineering major has no computer engineer job, so this uses the CS major.",,
+1110,Computer/Information Technology Administration and Management.,information technology,computer_science,cybersecurity_analyst,approved,"Field pools network admin, IT management and cybersecurity. Official links: cybersecurity_analyst, devops_engineer (network admin SOC), it_manager. it_manager is a senior role.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+1104,Information Science/Studies.,information science,computer_science,software_engineer,approved,"Official links: software_engineer, it_manager, ux_designer, product_manager. Alternative: exclude.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+1108,Computer Software and Media Applications.,computer software and media applications,computer_science,software_engineer,approved,"Official links: software_engineer, ux_designer, graphic_designer, animator, game_designer. Pools web, game and media programs.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+1109,Computer Systems Networking and Telecommunications.,computer networking,computer_science,cybersecurity_analyst,approved,"Official links: cybersecurity_analyst, software_engineer, it_manager. devops_engineer uses the network admin SOC but is not officially linked here.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+2705,Statistics.,statistics,computer_science,data_scientist,approved,Statistics is not one of CareerIQ's 12 majors. data_scientist is officially linked (also actuary). Alternative: exclude.,approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+5203,Accounting and Related Services.,accounting,business,accountant,proposed,Officially linked. PRD's own example.,,
+5208,Finance and Financial Management Services.,finance,business,financial_analyst,proposed,Officially linked. finance_economics.investment_analyst uses the same SOC (13-2051); its wage may differ through a proxy premium.,,
+5214,Marketing.,marketing,business,marketing_manager,proposed,"Officially linked and what a marketing student would pick in CareerIQ. It's a manager title, so the 0.62 entry discount is doing a lot of work here (tests H5). Alternative: social_sciences.market_researcher, a more typical first job.",,
+5202,"Business Administration, Management and Operations.",business administration,business,operations_manager,approved,"Largest business field. Official links include most business jobs, so there's no single typical job. Alternatives: management_consultant, hr_specialist, sales_manager. Worth a crosswalk sensitivity check.",approve (officially linked; run crosswalk sensitivity with management_consultant),"Advaith accepted recommendation, 2026-11-02"
+5201,"Business/Commerce, General.",business,business,operations_manager,approved,Same issue as 5202. Keep the two consistent.,approve (officially linked; keep consistent with 5202),"Advaith accepted recommendation, 2026-11-02"
+5210,Human Resources Management and Services.,human resources management,social_sciences,hr_specialist,approved,"Officially linked. HR specialist is the typical first job but sits under the Social Sciences major. Alternative: business.hr_manager, which a business student would pick.",approve (officially linked; typical first HR job),"Advaith accepted recommendation, 2026-11-02"
+5213,Management Sciences and Quantitative Methods.,management science,business,management_consultant,approved,"Official links: management_consultant, operations_manager, data_scientist, actuary.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+5206,Business/Managerial Economics.,business economics,finance_economics,economist,approved,"Official links: economist, management_consultant. Alternative: business.financial_analyst (not officially linked).",approve (officially linked; consistent with 4506),"Advaith accepted recommendation, 2026-11-02"
+5212,Management Information Systems and Services.,management information systems,computer_science,it_manager,approved,"it_manager is the only official link, but it's a senior role. Alternative: exclude.",approve (only officially linked job; note it is a senior role),"Advaith accepted recommendation, 2026-11-02"
+4506,Economics.,economics,finance_economics,economist,approved,"Officially linked, but the BLS economist SOC mostly employs people with graduate degrees. Alternative: business.financial_analyst, a more typical first job for a BA, but not officially linked. Relevant to H5.","approve economist (officially linked); financial_analyst as sensitivity check only, since it is not officially linked","Advaith accepted recommendation, 2026-11-02"
+1419,Mechanical Engineering.,mechanical engineering,engineering,mechanical_engineer,proposed,Officially linked.,,
+1408,Civil Engineering.,civil engineering,engineering,civil_engineer,proposed,Officially linked.,,
+1410,"Electrical, Electronics, and Communications Engineering.",electrical engineering,engineering,electrical_engineer,proposed,Officially linked.,,
+1407,Chemical Engineering.,chemical engineering,engineering,chemical_engineer,proposed,Officially linked.,,
+1405,Biomedical/Medical Engineering.,biomedical engineering,engineering,biomedical_engineer,proposed,Officially linked.,,
+1435,Industrial Engineering.,industrial engineering,engineering,industrial_engineer,proposed,Officially linked.,,
+1402,"Aerospace, Aeronautical, and Astronautical/Space Engineering.",aerospace engineering,engineering,aerospace_engineer,proposed,Officially linked.,,
+1414,Environmental/Environmental Health Engineering.,environmental engineering,engineering,environmental_engineer,proposed,Officially linked.,,
+1312,"Teacher Education and Professional Development, Specific Levels and Methods.",teacher education,education,elementary_teacher,proposed,"Officially linked. This field pools elementary, early childhood and secondary methods programs (hs_teacher is also linked). Elementary is the largest.",,
+1313,"Teacher Education and Professional Development, Specific Subject Areas.",teacher education in a specific subject,education,hs_teacher,proposed,Officially linked.,,
+1310,Special Education and Teaching.,special education,education,special_ed_teacher,proposed,Officially linked.,,
+1301,"Education, General.",education,,,excluded,No official link besides professor. Alternative: exclude. Draft mapping was education.elementary_teacher.,exclude (no official link),"Advaith accepted recommendation, 2026-11-02"
+4407,Social Work.,social work,social_sciences,social_worker,proposed,"Officially linked. CareerIQ's social_worker uses the Healthcare Social Workers SOC, which may pay above typical BSW jobs.",,
+4201,"Psychology, General.",psychology,social_sciences,psychologist,approved,"psychologist is the only official link, but psychologists need a doctorate. The earnings are for BA grads who are working. This is exactly the 'one job stands in for a major' assumption, so keeping it tests what a student would see. Alternatives: market_researcher, hr_specialist, exclude.",approve (only officially linked job); sensitivity check with market_researcher and hr_specialist,"Advaith accepted recommendation, 2026-11-02"
+4227,Research and Experimental Psychology.,experimental psychology,social_sciences,psychologist,approved,Same issue as 4201. Keep consistent.,approve (consistent with 4201),"Advaith accepted recommendation, 2026-11-02"
+4228,"Clinical, Counseling and Applied Psychology.",clinical or counseling psychology,social_sciences,psychologist,approved,Same issue as 4201. Keep consistent.,approve (consistent with 4201),"Advaith accepted recommendation, 2026-11-02"
+4400,"Human Services, General.",human services,social_sciences,community_organizer,approved,"Official links: community_organizer, nonprofit_manager.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+4511,Sociology.,sociology,,,excluded,"Fits the Social Sciences major, but no officially linked job except diplomat and lobbyist proxies. Leave the job blank to exclude, or pick one (e.g. nonprofit_manager, market_researcher).",exclude (only links are diplomat/lobbyist under a different major),"Advaith accepted recommendation, 2026-11-02"
+4510,Political Science and Government.,political science,law,policy_analyst,approved,"Officially linked, but it's a proxy (Political Scientists SOC, usually a graduate-level job). Many poli sci grads go to law school and so aren't in the earnings cohort.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+4509,International Relations and National Security Studies.,international relations,law,policy_analyst,approved,"Official links: policy_analyst, diplomat (proxy), lobbyist (proxy).",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+4405,Public Policy Analysis.,public policy,law,policy_analyst,proposed,Officially linked.,,
+2203,Legal Support Services.,paralegal studies,law,paralegal,proposed,Officially linked. Mostly associate's programs.,,
+0904,Journalism.,journalism,communications,journalist,proposed,Officially linked.,,
+0909,"Public Relations, Advertising, and Applied Communication.",public relations and advertising,communications,pr_specialist,proposed,Officially linked.,,
+0907,"Radio, Television, and Digital Communication.","radio, television and digital communication",communications,broadcast_journalist,proposed,Officially linked (proxy SOC same as journalist).,,
+0901,Communication and Media Studies.,communication,communications,pr_specialist,approved,"Official links: journalist, pr_specialist, editor, content_strategist, broadcast_journalist. No single typical job.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+2313,Rhetoric and Composition/Writing Studies.,writing and rhetoric,communications,technical_writer,approved,"Official links: technical_writer, editor, content_strategist.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+0402,Architecture.,architecture,arts_design,architect,proposed,Officially linked. Licensure usually needs more schooling and experience.,,
+5004,Design and Applied Arts.,design,arts_design,graphic_designer,approved,"The 4-digit field pools graphic, interior, fashion and industrial design (all officially linked). Graphic design is the largest.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+1003,Graphic Communications.,graphic communications,,,excluded,Only animator is officially linked. Graphic designer is the more typical job. Draft mapping was arts_design.graphic_designer.,exclude (graphic_designer not officially linked),"Advaith accepted recommendation, 2026-11-02"
+1909,Apparel and Textiles.,apparel and textiles,arts_design,fashion_designer,approved,Officially linked. Alternative: exclude.,approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+2601,"Biology, General.",biology,natural_sciences,biologist,proposed,Officially linked. Many biology grads go on to medical or graduate school and so aren't in the earnings cohort.,,
+2602,"Biochemistry, Biophysics and Molecular Biology.",biochemistry,natural_sciences,biochemist,proposed,Officially linked.,,
+4005,Chemistry.,chemistry,natural_sciences,chemist,proposed,Officially linked.,,
+4008,Physics.,physics,natural_sciences,physicist,proposed,Officially linked. The BLS physicist SOC is mostly PhDs.,,
+4006,Geological and Earth Sciences/Geosciences.,geology,natural_sciences,geoscientist,proposed,Officially linked.,,
+0301,Natural Resources Conservation and Research.,environmental science and natural resources,natural_sciences,environmental_scientist,proposed,Officially linked. Includes Environmental Science (03.0104).,,
+2607,Zoology/Animal Biology.,zoology,natural_sciences,zoologist,proposed,Officially linked.,,
+0306,Wildlife and Wildlands Science and Management.,wildlife science,natural_sciences,zoologist,proposed,Officially linked.,,
+2613,"Ecology, Evolution, Systematics, and Population Biology.",ecology,natural_sciences,biologist,approved,"Official links: biologist, zoologist, epidemiologist.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+2605,Microbiological Sciences and Immunology.,microbiology,natural_sciences,biologist,approved,Officially linked. Alternative: exclude.,approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+2615,Neurobiology and Neurosciences.,neuroscience,natural_sciences,biologist,approved,"Officially linked, but heavily pre-med. Alternative: exclude.",approve (officially linked),"Advaith accepted recommendation, 2026-11-02"
+5122,Public Health.,public health,natural_sciences,epidemiologist,approved,"Officially linked, but epidemiologists usually need a master's. No Healthcare-major job fits a public health BA. Alternative: exclude.",approve (officially linked; note it is usually a master's-level job),"Advaith accepted recommendation, 2026-11-02"
+2401,"Liberal Arts and Sciences, General Studies and Humanities.",,,,excluded,"Not one of CareerIQ's 12 majors. Large in community colleges (455 associate's rows), so excluding it is a coverage limitation to report.",,
+4301,Criminal Justice and Corrections.,,,,excluded,Not one of CareerIQ's 12 majors. Only proxy links (government_official = Compliance Officers SOC).,,
+3105,"Sports, Kinesiology, and Physical Education/Fitness.",,,,excluded,Not one of CareerIQ's 12 majors.,,
+2301,"English Language and Literature, General.",,,,excluded,Not one of CareerIQ's 12 majors. Only teaching is officially linked.,,
+5109,"Allied Health Diagnostic, Intervention, and Treatment Professions.",,,,excluded,"Radiography, sonography, respiratory therapy etc. CareerIQ has no matching job; physician_assistant needs a master's.",,
+5007,Fine and Studio Arts.,,,,excluded,"Official links are art_director and animator, both poor fits for a new grad. Alternative: map to arts_design.",,
+5401,History.,,,,excluded,Not one of CareerIQ's 12 majors.,,
+5107,Health and Medical Administrative Services.,,,,excluded,"Only nurse_manager (Medical and Health Services Managers) is a plausible link, and it's a senior role.",,
+5005,Drama/Theatre Arts and Stagecraft.,,,,excluded,No matching CareerIQ job.,,
+5009,Music.,,,,excluded,No matching CareerIQ job.,,
+2701,Mathematics.,,,,excluded,"Not one of CareerIQ's 12 majors. Official links: data_scientist, ml_engineer. Alternative: map like Statistics.",,
+5100,"Health Services/Allied Health/Health Sciences, General.",,,,excluded,No official link to any CareerIQ job.,,
+1907,"Human Development, Family Studies, and Related Services.",,,,excluded,"Weak links only (psychologist, community_organizer, ux_researcher).",,
+3099,"Multi/Interdisciplinary Studies, Other.",,,,excluded,No official link.,,
+5106,Dental Support Services and Allied Professions.,,,,excluded,Dental hygiene etc. dentist is a doctoral job.,,
+5006,Film/Video and Photographic Arts.,,,,excluded,No matching CareerIQ job.,,
+4504,Criminology.,,,,excluded,Not one of CareerIQ's 12 majors.,,
+5108,Allied Health and Medical Assisting Services.,,,,excluded,No matching CareerIQ job.,,
+5102,Communication Disorders Sciences and Services.,,,,excluded,No matching CareerIQ job (speech-language pathology needs a master's).,,
+4502,Anthropology.,,,,excluded,No officially linked job besides proxies.,,
+1609,"Romance Languages, Literatures, and Linguistics.",,,,excluded,Not one of CareerIQ's 12 majors.,,
+5209,Hospitality Administration/Management.,,,,excluded,No matching CareerIQ job.,,
+0109,Animal Sciences.,,,,excluded,No matching CareerIQ job.,,
+5211,International Business.,,,,excluded,Only operations_manager is officially linked. Alternative: map like 5202.,,
+0502,"Ethnic, Cultural Minority, Gender, and Group Studies.",,,,excluded,Not one of CareerIQ's 12 majors.,,
+5110,Clinical/Medical Laboratory Science/Research and Allied Professions.,,,,excluded,No matching CareerIQ job.,,
+2609,"Physiology, Pathology and Related Sciences.",,,,excluded,Heavily pre-med. Alternative: biologist.,,
+3000,"Multi-/Interdisciplinary Studies, General.",,,,excluded,No official link.,,
+4901,Air Transportation.,,,,excluded,No matching CareerIQ job.,,
+0101,Agricultural Business and Management.,,,,excluded,No matching CareerIQ job.,,
+5001,"Visual and Performing Arts, General.",,,,excluded,Too general.,,
+4501,"Social Sciences, General.",,,,excluded,Too general.,,
+3801,Philosophy.,,,,excluded,Not one of CareerIQ's 12 majors.,,
+1601,"Linguistic, Comparative, and Related Language Studies and Services.",,,,excluded,Not one of CareerIQ's 12 majors.,,
+5220,Construction Management.,,,,excluded,No matching CareerIQ job.,,
+4304,Security Science and Technology.,,,,excluded,Mixed field; no clear CareerIQ job.,,
+5207,Entrepreneurial and Small Business Operations.,,,,excluded,No single CareerIQ job.,,
+1508,Mechanical Engineering Related Technologies/Technicians.,,,,excluded,Technician roles; no CareerIQ job.,,
+1401,"Engineering, General.",,,,excluded,No specific engineering job.,,
+3020,International/Globalization Studies.,,,,excluded,Not one of CareerIQ's 12 majors.,,
+5115,Mental and Social Health Services and Allied Professions.,,,,excluded,Alternative: social_worker.,,
+5123,Rehabilitation and Therapeutic Professions.,,,,excluded,PT and OT need graduate degrees.,,
+5199,"Health Professions and Related Clinical Sciences, Other.",,,,excluded,No official link.,,
+3019,Nutrition Sciences.,,,,excluded,No matching CareerIQ job.,,
+4706,Vehicle Maintenance and Repair Technologies/Technicians.,,,,excluded,No matching CareerIQ job.,,
+1510,Construction Engineering Technology/Technician.,,,,excluded,Technician roles.,,
+3001,Biological and Physical Sciences.,,,,excluded,Too general.,,
+5010,"Arts, Entertainment, and Media Management.",,,,excluded,No matching CareerIQ job.,,
+5111,Health/Medical Preparatory Programs.,,,,excluded,Pre-professional; no job.,,

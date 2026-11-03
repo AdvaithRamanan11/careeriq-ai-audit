@@ -1,0 +1,16 @@
+school_group,earnings_band,eligible_rows,eligible_schools,eligible_tx_rows,sampled,sampled_tx,distinct_fields_sampled
+Community college,Bottom,111,78,13,10,5,5
+Community college,Middle,252,163,25,10,5,4
+Community college,Top,446,407,34,10,5,1
+Open admission,Bottom,1606,734,96,10,5,3
+Open admission,Middle,3658,849,213,10,5,5
+Open admission,Top,2752,728,200,10,5,8
+Above average,Bottom,549,252,31,10,5,5
+Above average,Middle,1147,289,65,10,5,7
+Above average,Top,1004,247,50,10,5,8
+Selective,Bottom,153,63,7,10,2,5
+Selective,Middle,278,66,19,10,4,5
+Selective,Top,304,57,18,10,3,8
+Elite,Bottom,89,35,1,10,1,7
+Elite,Middle,126,39,0,10,0,7
+Elite,Top,168,44,3,10,1,9

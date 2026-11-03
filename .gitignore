@@ -17,3 +17,7 @@ data/raw/*
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Test runs with the fake echo model, and draft outputs made before the crosswalk is final
+runs/test/
+data/processed/*_DRAFT.csv

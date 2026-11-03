@@ -1,0 +1,49 @@
+{
+  "_rule": "Each chatbot is represented by the API model closest to what its FREE consumer app gives a student by default (decided 2026-11-02). Before the full run, Advaith confirms in each free app which model it shows, and these entries are re-checked. Any change here is logged in prereg/decisions.md.",
+  "chatgpt": {
+    "provider": "openai",
+    "model_id": "gpt-5.6-luna",
+    "api_key_env": "OPENAI_API_KEY",
+    "free_app_default": "GPT-5.6 Luna",
+    "sources": [
+      "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+      "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
+      "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
+    ],
+    "checked": "2026-11-02",
+    "caveat": "OpenAI's Oct 7, 2026 release note says Free uses 'GPT-6 Luna'; the Free Tier FAQ and model page say GPT-5.6 Luna. Confirm in the app."
+  },
+  "gemini": {
+    "provider": "google",
+    "model_id": "gemini-3.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "free_app_default": "Auto (most prompts use Flash-Lite; harder prompts may go to Flash or Pro)",
+    "sources": [
+      "https://support.google.com/gemini/answer/18648722?hl=en",
+      "https://aistudio.google.com/docs/pricing"
+    ],
+    "checked": "2026-11-02",
+    "caveat": "The app's Auto routing can't be reproduced through the API, and Google's help page doesn't name the Flash-Lite version. gemini-3.5-flash-lite is the newest Flash-Lite in the API docs."
+  },
+  "claude": {
+    "provider": "anthropic",
+    "model_id": "claude-sonnet-5-5",
+    "api_key_env": "ANTHROPIC_API_KEY",
+    "free_app_default": "Sonnet (Sonnet 5.5 is the current Sonnet)",
+    "sources": [
+      "https://claude.com/pricing",
+      "https://www.anthropic.com/claude/sonnet"
+    ],
+    "checked": "2026-11-02",
+    "caveat": "No official page found that says 'Sonnet 5.5 is the Free default' in those words. Confirm in the app's model picker."
+  },
+  "echo": {
+    "provider": "echo",
+    "model_id": "echo-test",
+    "api_key_env": null,
+    "free_app_default": null,
+    "sources": [],
+    "checked": null,
+    "caveat": "Fake model for testing the pipeline without API calls. Never part of the study."
+  }
+}

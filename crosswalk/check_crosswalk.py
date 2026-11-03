@@ -42,8 +42,13 @@ def main() -> int:
     problems = []
     if cw.cip4.duplicated().any():
         problems.append(f"Duplicate CIP codes: {cw.cip4[cw.cip4.duplicated()].tolist()}")
-    if not cw.status.isin(["proposed", "judgment", "excluded"]).all():
-        problems.append("Unknown status values: " + str(set(cw.status) - {"proposed", "judgment", "excluded"}))
+    # proposed = clear mapping; judgment = waiting on Advaith; approved = judgment row he accepted;
+    # excluded = not sampled.
+    valid = {"proposed", "judgment", "approved", "excluded"}
+    if not cw.status.isin(valid).all():
+        problems.append("Unknown status values: " + str(set(cw.status) - valid))
+    if ((cw.status == "approved") & (cw.job_id == "")).any():
+        problems.append("Approved rows with no job_id: " + str(cw.cip4[(cw.status == "approved") & (cw.job_id == "")].tolist()))
 
     official = pd.read_excel(CIP_SOC_XLSX, sheet_name="CIP-SOC", dtype=str)
     official["cip4"] = official.CIP2020Code.str.replace(".", "", regex=False).str[:4]
@@ -72,7 +77,7 @@ def main() -> int:
 
     sheet = pd.DataFrame(rows)
     sheet["advaith_decision"] = ""
-    cols = ["cip4", "cip_name", "status", "major_id", "job_id", "job_title", "official_link",
+    cols = ["cip4", "cip_name", "prompt_major", "status", "major_id", "job_id", "job_title", "official_link",
             "soc", "soc_title", "soc_is_proxy", "bls_mean_wage", "usable_assoc", "usable_bach",
             "notes", "advaith_decision"]
     sheet[cols].to_csv(OUT, index=False)

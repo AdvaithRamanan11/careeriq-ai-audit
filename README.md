@@ -13,6 +13,13 @@ The point is an honest test. If CareerIQ loses, that result gets reported and th
 ```
 lib/common.py           shared paths, the pinned CareerIQ commit, Scorecard loaders
 data/download_data.py   downloads the Scorecard files (step 1)
+data/sample_profiles.py draws the 150 profiles with seed 2026 (step 3)
+runners/run_careeriq.mjs runs CareerIQ's own code on every profile (step 4)
+scoring/verify_careeriq.py recomputes CareerIQ's estimates independently as a check
+scoring/extract.py      pulls Earnings/Debt numbers out of forced-number answers
+runners/run_chatbots.py asks ChatGPT, Gemini and Claude every profile (steps 5 and 7)
+runners/models.json     which API model stands in for each chatbot, with sources
+runners/providers/      one small file per provider SDK, plus a fake "echo" model for tests
 data/raw/               the downloaded files (not in git, except MANIFEST.json)
 data/processed/         profiles.csv, careeriq_estimates.csv
 crosswalk/              cip_to_job.csv: Scorecard field codes -> CareerIQ jobs
@@ -45,6 +52,12 @@ git -C ../careeriq-baseline checkout ba51be37645409c929167b56d311d10902cbce98
 ```
 
 The scripts refuse to run if that checkout is at any other commit.
+
+API keys are read from environment variables and never stored in files. In PowerShell:
+
+```powershell
+$env:OPENAI_API_KEY = "..."; $env:GEMINI_API_KEY = "..."; $env:ANTHROPIC_API_KEY = "..."
+```
 
 ## Data: the answer key
 

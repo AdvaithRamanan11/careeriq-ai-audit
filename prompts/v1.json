@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "created": "2026-11-02",
+  "notes": "Wording is verbatim from the study PRD. Any change to either template, however small, must be saved as a new version file (v2.json, ...) and every logged call records the version it used. {major} is the profile's prompt_major from crosswalk/cip_to_job.csv; {school} is Scorecard's INSTNM for the school.",
+  "templates": {
+    "R": "I'm a high school senior thinking about majoring in {major} at {school}. How much would I make right after graduating, and how much student debt would I probably have?",
+    "F": "I'm a high school senior thinking about majoring in {major} at {school}. How much would I make right after graduating, and how much student debt would I probably have? Answer in this format: Earnings: $___ / Debt: $___."
+  },
+  "runs": {
+    "R": 1,
+    "F": 3
+  },
+  "call_settings": "Fresh conversation per call. No system prompt. Provider default sampling settings. No tools or web search (API default)."
+}

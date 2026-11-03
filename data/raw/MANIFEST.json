@@ -1,0 +1,47 @@
+{
+  "recorded_from": "https://collegescorecard.ed.gov/data/",
+  "files": {
+    "field_of_study_zip": {
+      "url": "https://ed-public-download.scorecard.network/downloads/Most-Recent-Cohorts-Field-of-Study_10152026.zip",
+      "filename": "Most-Recent-Cohorts-Field-of-Study_10152026.zip",
+      "bytes": 33857926,
+      "sha256": "d42cd9ec5ffb4868e0f87f988fdbe10dc6c78adf427f9f6e5026a706d715be06",
+      "downloaded_at": "2026-11-03T03:59:10+00:00",
+      "contents": [
+        "Most-Recent-Cohorts-Field-of-Study.csv"
+      ]
+    },
+    "institution_zip": {
+      "url": "https://ed-public-download.scorecard.network/downloads/Most-Recent-Cohorts-Institution_11022026.zip",
+      "filename": "Most-Recent-Cohorts-Institution_11022026.zip",
+      "bytes": 24209950,
+      "sha256": "4c31be45bb6defc17a972a8084a88d3d7ba4a4044884ea9529c03c7570a7305d",
+      "downloaded_at": "2026-11-03T03:59:11+00:00",
+      "contents": [
+        "Most-Recent-Cohorts-Institution.csv",
+        "__MACOSX/._Most-Recent-Cohorts-Institution.csv"
+      ]
+    },
+    "data_dictionary": {
+      "url": "https://collegescorecard.ed.gov/files/CollegeScorecardDataDictionary.xlsx",
+      "filename": "CollegeScorecardDataDictionary.xlsx",
+      "bytes": 769715,
+      "sha256": "8d258487f252aedc8c87bace61556446d49245bfe374734548bd861118e5cc4c",
+      "downloaded_at": "2026-11-03T03:59:11+00:00"
+    },
+    "field_of_study_documentation": {
+      "url": "https://collegescorecard.ed.gov/files/FieldOfStudyDataDocumentation.pdf",
+      "filename": "FieldOfStudyDataDocumentation.pdf",
+      "bytes": 2261537,
+      "sha256": "2afd04a36d884be04082ed450af060cdbe7d3a35d674c07c10c1c5b3dff3ba43",
+      "downloaded_at": "2026-11-03T03:59:11+00:00"
+    },
+    "cip_soc_crosswalk": {
+      "url": "https://nces.ed.gov/ipeds/cipcode/Files/CIP2020_SOC2018_Crosswalk.xlsx",
+      "filename": "CIP2020_SOC2018_Crosswalk.xlsx",
+      "bytes": 428901,
+      "sha256": "ba3d59a191b9d977a5c457a66b9348c4f2f7963aafacf72c0b80113b46bf0ab8",
+      "downloaded_at": "2026-11-03T04:00:51+00:00"
+    }
+  }
+}

@@ -9,7 +9,7 @@ Check CareerIQ's estimates against the formula, independently of CareerIQ's code
    admission school and an elite school) for Advaith to check by hand.
 3. Reproduces the PRD's own example (nursing at Austin Community College).
 
-Usage: python scoring/verify_careeriq.py
+Usage: python scoring/verify_careeriq.py [--show-truth]
 """
 
 import sys
@@ -20,6 +20,9 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from lib.common import PROCESSED, load_colleges, load_jobs  # noqa: E402
 
+# Scorecard values are hidden by default so CareerIQ's errors aren't seen before the
+# preregistration is filed. Pass --show-truth only after filing.
+SHOW_TRUTH = "--show-truth" in sys.argv
 ENTRY = 0.62          # EXPERIENCE_MULTIPLIERS['Entry'] in src/data/salaries.js
 SUBURBAN_NATIONAL = 1.0
 
@@ -62,7 +65,9 @@ def main() -> int:
               f"x 1.00 (Suburban, National) x 0.62 (Entry) = ${j.blsBase * c.earningsMultiplier * ENTRY:,.2f} "
               f"-> ${r.ciq_salary:,}")
         print(f"  debt   = ${c.netPrice['mid2']:,} net price/yr ($48k-75k) x {r.program_years} yrs = ${r.ciq_debt:,}")
-        print(f"  Scorecard: 1-yr earnings ${r.sc_earn_1yr:,.0f}, median debt ${r.sc_debt_eval:,.0f}\n")
+        if SHOW_TRUTH:
+            print(f"  Scorecard: 1-yr earnings ${r.sc_earn_1yr:,.0f}, median debt ${r.sc_debt_eval:,.0f}")
+        print()
 
     acc = colleges[colleges.name == "Austin Community College District"]
     if len(acc):

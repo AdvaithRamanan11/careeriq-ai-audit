@@ -17,6 +17,11 @@ data/sample_profiles.py draws the 150 profiles with seed 2026 (step 3)
 runners/run_careeriq.mjs runs CareerIQ's own code on every profile (step 4)
 scoring/verify_careeriq.py recomputes CareerIQ's estimates independently as a check
 scoring/extract.py      pulls Earnings/Debt numbers out of forced-number answers
+data/make_splits.py     fixes the 80/20 holdout schools and the 30-profile app spot check
+scoring/metrics.py      the scoring rubric as code (errors, CV, bootstrap CIs, kappa)
+scoring/codebook.md     rules for hand-coding real-student answers
+scoring/make_coding_sheets.py  blind, shuffled coding sheets + second-coder sheet
+scoring/agreement.py    Cohen's kappa between the two coders
 runners/run_chatbots.py asks ChatGPT, Gemini and Claude every profile (steps 5 and 7)
 runners/models.json     which API model stands in for each chatbot, with sources
 runners/providers/      one small file per provider SDK, plus a fake "echo" model for tests

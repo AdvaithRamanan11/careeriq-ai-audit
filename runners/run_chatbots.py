@@ -84,6 +84,7 @@ def main() -> int:
     ap.add_argument("--pilot", action="store_true", help="the fixed 10-profile pilot subset")
     ap.add_argument("--workers", type=int, default=4, help="parallel calls per chatbot")
     args = ap.parse_args()
+    args.out_dir = args.out_dir.resolve()
 
     if args.profiles is None:
         final = PROCESSED / "profiles.csv"

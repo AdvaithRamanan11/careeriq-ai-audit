@@ -1,0 +1,31 @@
+profile_id,school_group,earnings_band,school,INSTNM,state,prompt_major
+P006,Community college,Bottom,Dutchess Community College,Dutchess Community College,NY,human services
+P009,Community college,Bottom,Spokane Falls Community College,Spokane Falls Community College,WA,design
+P012,Community college,Middle,Dallas College,Dallas College,TX,business administration
+P020,Community college,Middle,Bryant & Stratton College-Virginia Beach,Bryant & Stratton College-Virginia Beach,VA,paralegal studies
+P024,Community college,Top,Collin County Community College District,Collin County Community College District,TX,nursing
+P025,Community college,Top,Temple College,Temple College,TX,nursing
+P037,Open admission,Bottom,University of Puget Sound,University of Puget Sound,WA,psychology
+P038,Open admission,Bottom,National University,National University,CA,psychology
+P044,Open admission,Middle,University of North Texas,University of North Texas,TX,marketing
+P049,Open admission,Middle,Salem State University,Salem State University,MA,business administration
+P055,Open admission,Top,Texas Woman's University,Texas Woman's University,TX,computer and information sciences
+P060,Open admission,Top,Seattle University,Seattle University,WA,finance
+P062,Above average,Bottom,Baylor University,Baylor University,TX,design
+P069,Above average,Bottom,Arizona State University Digital Immersion,Arizona State University Digital Immersion,AZ,neuroscience
+P075,Above average,Middle,Texas Christian University,Texas Christian University,TX,journalism
+P080,Above average,Middle,Dordt University,Dordt University,IA,teacher education
+P081,Above average,Top,The University of Texas at Dallas,The University of Texas at Dallas,TX,electrical engineering
+P082,Above average,Top,Texas A & M International University,Texas A & M International University,TX,accounting
+P095,Selective,Bottom,University of Michigan-Ann Arbor,University of Michigan-Ann Arbor,MI,ecology
+P096,Selective,Bottom,Florida Agricultural and Mechanical University,Florida Agricultural and Mechanical University,FL,biology
+P103,Selective,Middle,The University of Texas at Austin,The University of Texas at Austin,TX,political science
+P105,Selective,Middle,Smith College,Smith College,MA,political science
+P111,Selective,Top,The University of Texas at Austin,The University of Texas at Austin,TX,accounting
+P114,Selective,Top,University of California-San Diego,University of California-San Diego,CA,mechanical engineering
+P123,Elite,Bottom,Carnegie Mellon University,Carnegie Mellon University,PA,design
+P127,Elite,Bottom,Johns Hopkins University,Johns Hopkins University,MD,neuroscience
+P132,Elite,Middle,Brown University,Brown University,RI,international relations
+P138,Elite,Middle,Cornell University,Cornell University,NY,environmental science and natural resources
+P144,Elite,Top,Carnegie Mellon University,Carnegie Mellon University,PA,electrical engineering
+P148,Elite,Top,University of California-Los Angeles,University of California-Los Angeles,CA,computer engineering

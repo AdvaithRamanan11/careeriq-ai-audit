@@ -26,7 +26,10 @@ Every methods choice made before the preregistration goes here with its reason. 
 
 | # | Question | Status |
 |---|---|---|
-| O3 | **Final hypothesis thresholds (H1–H4)** for the preregistration. | Draft in step 6, before filing on OSF. |
+| O3 | **Final hypothesis thresholds (H1–H4).** The draft keeps the PRD's starting values (20%, 50%, 5%) and adds three-way decision rules (supported / not supported / inconclusive) based on 95% CIs. | In `prereg/preregistration.md` §1.3. Confirm before filing. |
+| O5 | **Test H5–H7 on all eligible rows at training schools,** not just the 150 profiles (a departure from the PRD). | The 150 profiles hold only 11 high-ceiling and 19 compressed-pay profiles. CareerIQ is free to run on every row. Held-out schools stay untouched. Confirm before filing. |
+| O6 | **App spot check: R and F once each (180 hand entries), or F only (90)?** | Confirm before filing. |
+| O7 | **Rule until filing:** no CareerIQ-vs-Scorecard or chatbot-vs-Scorecard errors are computed or viewed. Scoring code is tested only on fake data. `verify_careeriq.py` hides Scorecard values unless `--show-truth` is passed. | Protects the preregistration. Lifts once it's filed on OSF. |
 | O4 | **Second coder:** who codes 50 R answers independently? | Advaith to find someone (PRD open question). |
 
 ## API cost estimate (checked 2026-11-02, to confirm after the pilot)

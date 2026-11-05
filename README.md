@@ -6,7 +6,7 @@ This study asks ChatGPT, Gemini, Claude, and [CareerIQ](https://github.com/Advai
 
 The point is an honest test. If CareerIQ loses, that result gets reported and the tool gets fixed.
 
-**Status:** in progress (Nov 2026). Methods will be preregistered on OSF before the full data collection run.
+**Status:** in progress (Nov 2026). Preregistered on OSF: https://osf.io/hw48f (embargoed until the preprint is posted). Registered commit: `d04738bdfc392cc5c98057aaba25a56c68bc08af` (tag `prereg-filed`). Changes to methods since filing are logged in [prereg/deviations.md](prereg/deviations.md).
 
 ## Repo layout
 

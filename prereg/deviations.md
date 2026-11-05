@@ -1,6 +1,6 @@
 # Deviations from the preregistration
 
-The preregistration was filed on OSF on 2026-11-04 from commit `d04738bdfc392cc5c98057aaba25a56c68bc08af` (tag `prereg-filed`). `prereg/preregistration.md` is frozen at that text. Every entry below is reported in the write-up.
+The preregistration was filed on OSF on 2026-11-04 (https://osf.io/hw48f) from commit `d04738bdfc392cc5c98057aaba25a56c68bc08af` (tag `prereg-filed`). `prereg/preregistration.md` is frozen at that text. Every entry below is reported in the write-up.
 
 ## What counts
 

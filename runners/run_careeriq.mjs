@@ -10,7 +10,10 @@
  *   calculateLoan:   incomeKey "mid2" (family income $48,001-$75,000)
  *
  * Usage (Node 20.10+):
- *   node runners/run_careeriq.mjs [profiles.csv]
+ *   node runners/run_careeriq.mjs [profiles.csv] [output.csv]
+ *   Any CSV with profile_id, UNITID and job_id columns works as input. With no
+ *   output path, the result goes to data/processed/careeriq_estimates.csv
+ *   (or careeriq_estimates_DRAFT.csv for a draft input).
  * Env:
  *   CAREERIQ_DIR  path to the CareerIQ checkout (default ../careeriq-baseline)
  */
@@ -115,7 +118,9 @@ for (const p of profiles) {
   })
 }
 
-const outPath = path.join(processed, isDraft ? 'careeriq_estimates_DRAFT.csv' : 'careeriq_estimates.csv')
+const outPath = process.argv[3]
+  ? path.resolve(process.argv[3])
+  : path.join(processed, isDraft ? 'careeriq_estimates_DRAFT.csv' : 'careeriq_estimates.csv')
 const header = Object.keys(out[0])
 fs.writeFileSync(outPath, [header.join(','), ...out.map(r => header.map(h => csvCell(r[h])).join(','))].join('\n') + '\n')
 console.log(`Node ${process.version}. CareerIQ at ${head.slice(0, 7)}.`)

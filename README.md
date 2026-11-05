@@ -22,6 +22,10 @@ scoring/metrics.py      the scoring rubric as code (errors, CV, bootstrap CIs, k
 scoring/codebook.md     rules for hand-coding real-student answers
 scoring/make_coding_sheets.py  blind, shuffled coding sheets + second-coder sheet
 scoring/agreement.py    Cohen's kappa between the two coders
+scoring/assemble.py     raw answers + review fixes + CareerIQ + Scorecard -> scored tables (scoring/out/)
+analysis/results.py     every preregistered table, figure and decision rule -> analysis/results.md
+analysis/careeriq_all_rows.py  CareerIQ on all eligible training rows (H5-H7 primary test)
+analysis/cpi_adjust.py  CPI-U factors for the inflation check
 runners/run_chatbots.py asks ChatGPT, Gemini and Claude every profile (steps 5 and 7)
 runners/models.json     which API model stands in for each chatbot, with sources
 runners/providers/      one small file per provider SDK, plus a fake "echo" model for tests

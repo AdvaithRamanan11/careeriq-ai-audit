@@ -3,8 +3,8 @@
 > Final text, 2026-11-04. Once filed on OSF, this document is frozen. Any later change is logged as a deviation in `prereg/deviations.md` and reported in the write-up.
 
 **Author:** Advaith Ramanan (independent researcher)
-**Filing:** OSF Registries, November 2026, before the pilot and the full chatbot data collection. Kept private (embargoed) until the study is complete.
-**Code and data:** github.com/AdvaithRamanan11/careeriq-ai-audit, at the commit tagged `prereg-v1`.
+**Filing:** OSF Registries, November 2026, before the pilot and the full chatbot data collection. Embargoed on OSF until the preprint is posted; the embargo is then ended early.
+**Code and data:** github.com/AdvaithRamanan11/careeriq-ai-audit, at the commit recorded in the OSF registration summary.
 
 ---
 

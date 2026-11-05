@@ -21,3 +21,6 @@ Thumbs.db
 # Test runs with the fake echo model, and draft outputs made before the crosswalk is final
 runs/test/
 data/processed/*_DRAFT.csv
+
+# Intermediate HTML from prereg/build_filing.py (the PDF is what gets filed)
+prereg/preregistration.html

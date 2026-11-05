@@ -199,10 +199,13 @@ def summarize(path: Path) -> None:
         review = path.with_name(path.stem + "_needs_review.csv")
         with open(review, "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)
-            w.writerow(["profile_id", "run", "extract_notes", "raw_text", "earnings_fixed", "debt_fixed", "reviewer_note"])
+            # format_refused: yes if the answer declined to fill the blanks but gave a figure in
+            # prose, which the reviewer records in *_fixed (deviations.md entry 1).
+            w.writerow(["profile_id", "run", "extract_notes", "raw_text",
+                        "earnings_fixed", "debt_fixed", "format_refused", "reviewer_note"])
             for r in need:
                 w.writerow([r["profile_id"], r["run"], r.get("extracted", {}).get("extract_notes", r["status"]),
-                            r["raw_text"], "", "", ""])
+                            r["raw_text"], "", "", "", ""])
         print(f"  Wrote {review.relative_to(REPO)} for hand review")
 
 

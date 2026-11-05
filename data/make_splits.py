@@ -34,7 +34,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lib.common import PROCESSED, REPO  # noqa: E402
+from lib.common import PROCESSED, REPO, prompt_school  # noqa: E402
 from data.sample_profiles import BANDS, GROUPS, eligible_rows, school_groups  # noqa: E402
 
 SEED = 2026
@@ -114,7 +114,7 @@ def main() -> int:
         for bot in SPOT_CHATBOTS:
             rows.append({
                 "profile_id": p.profile_id, "chatbot": bot, "prompt_type": "R",
-                "prompt_text": prompts["R"].format(major=p.prompt_major, school=p.INSTNM),
+                "prompt_text": prompts["R"].format(major=p.prompt_major, school=prompt_school(p.INSTNM)),
                 "date": "", "model_shown_in_app": "", "logged_in": "", "web_search_used": "",
                 "response_text": "", "notes": "",
             })

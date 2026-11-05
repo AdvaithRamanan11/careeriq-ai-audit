@@ -1,7 +1,8 @@
 {
   "version": "v1",
   "created": "2026-11-02",
-  "notes": "Wording is verbatim from the study PRD. Any change to either template, however small, must be saved as a new version file (v2.json, ...) and every logged call records the version it used. {major} is the profile's prompt_major from crosswalk/cip_to_job.csv; {school} is Scorecard's INSTNM for the school.",
+  "notes": "Wording is verbatim from the study PRD. Any change to either template, however small, must be saved as a new version file (v2.json, ...) and every logged call records the version it used. {major} is the profile's prompt_major from crosswalk/cip_to_job.csv; {school} is Scorecard's INSTNM for the school after the school_name_rule below.",
+  "school_name_rule": "Use Scorecard's INSTNM unchanged, except remove a trailing '-Main Campus'. No other change. Implemented in lib/common.py prompt_school(). Fixed 2026-11-04 before any data collection (D31). In the 150 study profiles this changes exactly one name (Pennsylvania State University-Main Campus); in the pilot, one (University of Virginia-Main Campus).",
   "templates": {
     "R": "I'm a high school senior thinking about majoring in {major} at {school}. How much would I make right after graduating, and how much student debt would I probably have?",
     "F": "I'm a high school senior thinking about majoring in {major} at {school}. How much would I make right after graduating, and how much student debt would I probably have? Answer in this format: Earnings: $___ / Debt: $___."

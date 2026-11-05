@@ -27,7 +27,7 @@ SEED = 2026
 N_SECOND = 50
 PRIMARY_COLS = ["earnings_number", "earnings_value", "earnings_low", "earnings_high",
                 "debt_number", "debt_value", "debt_low", "debt_high",
-                "gives_range", "caveat", "source_type", "source_text",
+                "gives_range", "caveat_uncertainty", "caveat_factor", "caveat_official", "source_type", "source_text",
                 "source_verified", "verification_notes", "coder_notes"]
 SECOND_COLS = ["caveat", "source_type", "coder_notes"]
 

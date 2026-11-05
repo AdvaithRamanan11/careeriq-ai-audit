@@ -39,7 +39,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lib.common import PROCESSED, REPO  # noqa: E402
+from lib.common import PROCESSED, REPO, prompt_school  # noqa: E402
 from scoring.extract import extract  # noqa: E402
 
 MODELS = json.loads((REPO / "runners" / "models.json").read_text(encoding="utf-8"))
@@ -122,7 +122,7 @@ def main() -> int:
 
         def work(job):
             p, ptype, run = job
-            prompt = prompts["templates"][ptype].format(major=p["prompt_major"], school=p["INSTNM"])
+            prompt = prompts["templates"][ptype].format(major=p["prompt_major"], school=prompt_school(p["INSTNM"]))
             base = {
                 "contestant": c, "provider": spec["provider"], "model_requested": spec["model_id"],
                 "profile_id": p["profile_id"], "prompt_version": args.prompt_version, "prompt_type": ptype,

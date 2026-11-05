@@ -44,6 +44,18 @@ NUMERIC_FOS = ["EARN_MDN_1YR", "EARN_MDN_5YR", "EARN_MDN_1YR_NAT",
 CREDLEV_ASSOC, CREDLEV_BACH = "2", "3"
 
 
+def prompt_school(instnm: str) -> str:
+    """The school name as it appears in a prompt (D31, prompts/v1.json 'school_name_rule').
+
+    Scorecard's INSTNM is used as-is, except that a trailing '-Main Campus' is removed,
+    because that suffix is an IPEDS label no student would type ("Pennsylvania State
+    University-Main Campus" -> "Pennsylvania State University"). Every other hyphen
+    suffix names a real campus (e.g. "University of California-Berkeley") and is kept.
+    """
+    suffix = "-Main Campus"
+    return instnm[:-len(suffix)] if instnm.endswith(suffix) else instnm
+
+
 def check_baseline() -> None:
     """Stop with a clear error if the CareerIQ checkout is not at the pinned commit."""
     if not CAREERIQ_DIR.exists():

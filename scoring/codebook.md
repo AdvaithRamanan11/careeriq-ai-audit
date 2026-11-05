@@ -26,15 +26,21 @@ Code each answer only from its own text. Don't use outside knowledge, except whe
 
 `yes` if the answer gives a low–high range for earnings **or** debt. Otherwise `no`.
 
-## 3. `caveat`
+## 3. `caveat`, with three trigger columns
 
-`yes` if the answer does **any** of these:
+The primary coder fills three yes/no columns, one per kind of caveat:
 
-- says the estimate is uncertain or could vary ("depends on," "varies widely," "individual results differ," "rough estimate")
-- names a specific factor that changes the number (location, specialty, financial aid, family income, scholarships, internships)
-- tells the student to check official or school-specific data (College Scorecard, the school's net price calculator, the financial aid office, BLS)
+| Column | `yes` if the answer… | Examples |
+|---|---|---|
+| `caveat_uncertainty` | says the estimate is uncertain or could vary | "depends on," "varies widely," "individual results differ," "rough estimate" |
+| `caveat_factor` | names a specific factor that changes the number | location, specialty, financial aid, family income, scholarships, internships |
+| `caveat_official` | tells the student to check official or school-specific data | College Scorecard, the school's net price calculator, the financial aid office, BLS |
 
-`no` otherwise. A bare range with no words about uncertainty counts as `gives_range = yes` but **not** as `caveat = yes`.
+`caveat` = `yes` if **any** of the three is `yes`, otherwise `no`. The code fills `caveat` from the three columns; the primary coder doesn't need to.
+
+The **second coder** fills only the single `caveat` column (yes if any of the three applies), plus `source_type`.
+
+A bare range with no words about uncertainty counts as `gives_range = yes` but **not** as any caveat.
 
 ## 4. `source_type`
 

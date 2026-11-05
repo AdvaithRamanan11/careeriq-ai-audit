@@ -1,0 +1,58 @@
+Profiles: 150 from profiles.csv; prompt v1; out C:\Users\AdvaithRamanan\Desktop\CareerIQ_Study\careeriq-ai-audit\runs
+
+[chatgpt] gpt-6-luna: 600 calls to make (0 already logged)
+  25/600  {'ok': 25}
+  50/600  {'ok': 50}
+  75/600  {'ok': 75}
+  100/600  {'ok': 100}
+  125/600  {'ok': 125}
+  150/600  {'ok': 150}
+  175/600  {'ok': 175}
+  200/600  {'ok': 200}
+  225/600  {'ok': 225}
+  250/600  {'ok': 250}
+  275/600  {'ok': 275}
+  300/600  {'ok': 300}
+  325/600  {'ok': 325}
+  350/600  {'ok': 350}
+  375/600  {'ok': 375}
+  400/600  {'ok': 400}
+  425/600  {'ok': 425}
+  450/600  {'ok': 450}
+  475/600  {'ok': 475}
+  500/600  {'ok': 500}
+  525/600  {'ok': 525}
+  550/600  {'ok': 550}
+  575/600  {'ok': 575}
+  600/600  {'ok': 600}
+  chatgpt.jsonl: 600 final answers; models returned: ['gpt-6-luna']
+  F answers needing hand review: 0; error lines (will retry on rerun): 0
+
+[claude] claude-sonnet-5-5: 600 calls to make (0 already logged)
+  25/600  {'ok': 25}
+  50/600  {'ok': 50}
+  75/600  {'ok': 75}
+  100/600  {'ok': 100}
+  125/600  {'ok': 125}
+  150/600  {'ok': 150}
+  175/600  {'ok': 175}
+  200/600  {'ok': 200}
+  225/600  {'ok': 225}
+  250/600  {'ok': 250}
+  275/600  {'ok': 275}
+  300/600  {'ok': 300}
+  325/600  {'ok': 325}
+  350/600  {'ok': 350}
+  375/600  {'ok': 375}
+  400/600  {'ok': 400}
+  425/600  {'ok': 425}
+  450/600  {'ok': 450}
+  475/600  {'ok': 475}
+  500/600  {'ok': 500}
+  525/600  {'ok': 525}
+  550/600  {'ok': 550}
+  575/600  {'ok': 575}
+  600/600  {'ok': 600}
+  claude.jsonl: 600 final answers; models returned: ['claude-sonnet-5-5']
+  F answers needing hand review: 8; error lines (will retry on rerun): 0
+  Wrote runs\claude_needs_review.csv for hand review

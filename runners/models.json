@@ -2,16 +2,17 @@
   "_rule": "Each chatbot is represented by the API model closest to what its FREE consumer app gives a student by default (decided 2026-11-02). Before the full run, Advaith confirms in each free app which model it shows, and these entries are re-checked. Any change here is logged in prereg/decisions.md.",
   "chatgpt": {
     "provider": "openai",
-    "model_id": "gpt-5.6-luna",
+    "model_id": "gpt-6-luna",
     "api_key_env": "OPENAI_API_KEY",
-    "free_app_default": "GPT-5.6 Luna",
+    "free_app_default": "GPT-6 (Luna)",
     "sources": [
-      "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
-      "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
-      "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
+      "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "https://developers.openai.com/api/docs/models/gpt-6-luna"
     ],
-    "checked": "2026-11-02",
-    "caveat": "OpenAI's Oct 7, 2026 release note says Free uses 'GPT-6 Luna'; the Free Tier FAQ and model page say GPT-5.6 Luna. Confirm in the app."
+    "checked": "2026-11-04",
+    "app_check": "2026-11-04, Advaith, free account, new chat: the app identified the model as 'GPT-6'. OpenAI's Oct 7, 2026 release note says Free and Go use 'GPT-6 Luna' (paid tiers use GPT-6 Sol). Entry changed from gpt-5.6-luna to gpt-6-luna on 2026-11-04 (D25).",
+    "caveat": "OpenAI's Free Tier FAQ still said GPT-5.6 Luna on 2026-11-02; the release notes and the app check both say GPT-6. The app showed 'GPT-6' without the 'Luna' suffix; Luna is inferred from the release note. API reasoning effort is left at its default, 'medium'.",
+    "previous": {"model_id": "gpt-5.6-luna", "until": "2026-11-04", "source": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"}
   },
   "gemini": {
     "provider": "google",
@@ -23,19 +24,21 @@
       "https://aistudio.google.com/docs/pricing"
     ],
     "checked": "2026-11-02",
+    "app_check": "2026-11-04, Advaith, free account, new chat: model menu showed 'Gemini Auto (Gemini 3 models)'. Consistent with this entry.",
     "caveat": "The app's Auto routing can't be reproduced through the API, and Google's help page doesn't name the Flash-Lite version. gemini-3.5-flash-lite is the newest Flash-Lite in the API docs."
   },
   "claude": {
     "provider": "anthropic",
     "model_id": "claude-sonnet-5-5",
     "api_key_env": "ANTHROPIC_API_KEY",
-    "free_app_default": "Sonnet (Sonnet 5.5 is the current Sonnet)",
+    "free_app_default": "Sonnet 5.5, effort 'medium'",
     "sources": [
       "https://claude.com/pricing",
       "https://www.anthropic.com/claude/sonnet"
     ],
     "checked": "2026-11-02",
-    "caveat": "No official page found that says 'Sonnet 5.5 is the Free default' in those words. Confirm in the app's model picker."
+    "app_check": "2026-11-04, Advaith, free account, new chat: picker showed 'Sonnet 5.5' with effort 'medium'. Confirmed. API calls therefore set output_config.effort = 'medium' (D24); the API default would be 'high'.",
+    "caveat": "The app's 'medium' is assumed to correspond to the API's effort level 'medium'. Anthropic does not publish the exact mapping."
   },
   "echo": {
     "provider": "echo",

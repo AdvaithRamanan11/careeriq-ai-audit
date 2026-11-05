@@ -28,6 +28,8 @@ Every methods choice made before the preregistration goes here with its reason. 
 | D20 | 2026-11-04 | **Inflation robustness check:** rerun earnings accuracy with Scorecard's 2024-dollar earnings brought to the query month using CPI-U (BLS series `CUUR0000SA0`, not seasonally adjusted, base = 2024 annual average). Debt not adjusted. | Chatbots answer in today's dollars; Scorecard reports 2024 dollars. The gap is about two years of inflation, which could be mistaken for chatbot error. |
 | D21 | 2026-11-04 | **Secondary H7 comparison:** CareerIQ's federal portion, min(total loan, $27,000; $12,000 at 2-year schools), vs. `DEBT_ALL_STGP_EVAL_MDN`. Descriptive, no decision rule. | Separates "CareerIQ assumes borrowing beyond the federal caps" from "CareerIQ's federal-loan assumption is itself off." |
 | D22 [O4] | 2026-11-04 | **Second coder: Safiullah Baig**, who had no role in the study design. Codes `caveat` and `source_type` on 50 random R answers from the codebook alone, with no discussion until finished. Named publicly only with their permission. | PRD open question, now settled. |
+| D24 | 2026-11-04 | **Claude API calls set effort = "medium."** Advaith's app check showed the free Claude app defaulting to Sonnet 5.5 at "medium." The API default for Sonnet 5.5 is "high." | Follows D3 (match the free app). Assumes the app's "medium" maps to the API's "medium"; Anthropic doesn't publish the mapping. Amends D12. |
+| D25 | 2026-11-04 | **ChatGPT = `gpt-6-luna`** (was `gpt-5.6-luna`). The free app identified itself as GPT-6; OpenAI's Oct 7 release note says Free uses GPT-6 Luna; OpenAI's model page confirms the API ID `gpt-6-luna`, $0.10 / $0.50 per 1M tokens, effort default "medium." Gemini's app check ("Gemini Auto, Gemini 3 models") was consistent with `gemini-3.5-flash-lite`. | Amends D11. Changed before any chatbot data was collected. |
 | D23 | 2026-11-04 | **Pilot answers are read by Advaith and by Claude (the analysis assistant)** to check number extraction and refusals. Neither compares any pilot answer with Scorecard; the pilot file carries no Scorecard values. | Advaith chose both-of-us review. Stated in the preregistration. |
 
 ## Open
@@ -43,12 +45,12 @@ Each chatbot gets 640 calls: 150 profiles × 4, plus the 40 pilot calls. Each pr
 
 | Chatbot | Model | Output price / 1M | Estimated cost |
 |---|---|---|---|
-| ChatGPT | gpt-5.6-luna | $1.20 | ~$1.50 |
+| ChatGPT | gpt-6-luna | $0.50 | ~$0.65 |
 | Gemini | gemini-3.5-flash-lite | $2.50 | ~$3.20 |
 | Claude | claude-sonnet-5-5 | $10.00 | ~$12.80 |
-| **Total** | | | **~$17.50**. Suggested budget: **$30**, to cover retries |
+| **Total** | | | **~$16.65**. Suggested budget: **$30**, to cover retries |
 
-Input costs are under $0.10 total. The pilot logs real token counts, so the estimate gets redone from those before the full run. Price sources: OpenAI's [GPT-5.6 Luna model page](https://developers.openai.com/api/docs/models/gpt-5.6-luna), [Gemini API pricing](https://aistudio.google.com/docs/pricing), and Anthropic's published API pricing for Sonnet 5.5.
+Input costs are under $0.10 total. The pilot logs real token counts, so the estimate gets redone from those before the full run. Price sources (checked 2026-11-04): OpenAI's [GPT-6 Luna model page](https://developers.openai.com/api/docs/models/gpt-6-luna), [Gemini API pricing](https://aistudio.google.com/docs/pricing), and Anthropic's published API pricing for Sonnet 5.5.
 
 ## Facts found in the data that the write-up must mention
 

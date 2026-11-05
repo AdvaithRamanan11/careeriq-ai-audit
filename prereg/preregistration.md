@@ -20,12 +20,12 @@ High school students can ask a chatbot what a specific college and major will pa
 
 | Contestant | How it is queried | Model |
 |---|---|---|
-| ChatGPT | OpenAI API | `gpt-5.6-luna` |
+| ChatGPT | OpenAI API | `gpt-6-luna` (reasoning effort at the API default, medium) |
 | Gemini | Google Gemini API | `gemini-3.5-flash-lite` |
-| Claude | Anthropic API | `claude-sonnet-5-5` |
+| Claude | Anthropic API | `claude-sonnet-5-5`, effort set to medium (the API default is high) |
 | CareerIQ | Its own code at commit `ba51be3` (Nov 1, 2026), run by script | — |
 
-Each chatbot is represented by the API model closest to its **free consumer app's default** as of 2026-11-02 (sources in `runners/models.json`). **[CONFIRM: Advaith checks each free app's displayed model before filing.]**
+Each chatbot is represented by the API model closest to its **free consumer app's default**. On 2026-11-04 the author opened each free app in a new chat: ChatGPT identified itself as GPT-6 (OpenAI's release notes say Free and Go accounts use GPT-6 Luna), Gemini showed "Gemini Auto (Gemini 3 models)," and Claude showed "Sonnet 5.5" at effort "medium." The ChatGPT entry was changed from `gpt-5.6-luna` to `gpt-6-luna` that day, before any chatbot data was collected (D25). Sources and the full app-check notes are in `runners/models.json`.
 
 ### 1.3 Hypotheses
 
@@ -111,7 +111,7 @@ R answers are hand-coded on sheets with the chatbot's name removed and the order
 
 ### 3.2 Call settings (D12)
 
-Every call is a fresh conversation with one user message: no system prompt, no tools (so no web search), and provider defaults for sampling and reasoning. Claude requires `max_tokens`, which is set to 16,000. Claude's server-side refusal fallback is off. An API-level refusal or safety block is retried once with the same prompt, and both attempts are logged.
+Every call is a fresh conversation with one user message: no system prompt, no tools (so no web search), and provider defaults for sampling and reasoning, with one exception: Claude's effort is set to "medium" to match the free app (D24). Claude requires `max_tokens`, which is set to 16,000. Claude's server-side refusal fallback is off. An API-level refusal or safety block is retried once with the same prompt, and both attempts are logged.
 
 Each model's full set of 600 calls (150 profiles × 4) runs within one 7-day window. Every call logs the requested and returned model ID, a timestamp, the prompt version and text, the raw response, the stop reason and token usage (`runners/run_chatbots.py`, one JSONL file per chatbot).
 

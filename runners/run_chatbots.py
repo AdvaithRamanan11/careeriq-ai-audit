@@ -45,6 +45,22 @@ from scoring.extract import extract  # noqa: E402
 MODELS = json.loads((REPO / "runners" / "models.json").read_text(encoding="utf-8"))
 
 
+def load_user_env_var(name: str) -> None:
+    """Windows only: a variable stored with SetEnvironmentVariable(..., 'User') is not visible
+    to a terminal that was already open. Read it from the user's registry hive into this
+    process so the keys never need to be typed into a shell session or a file."""
+    if sys.platform != "win32":
+        return
+    import winreg
+    try:
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment") as k:
+            value, _ = winreg.QueryValueEx(k, name)
+    except OSError:
+        return
+    if value:
+        os.environ[name] = value
+
+
 def load_profiles(path: Path) -> list[dict]:
     with open(path, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
@@ -94,6 +110,8 @@ def main() -> int:
         if c not in MODELS or c.startswith("_"):
             raise SystemExit(f"Unknown contestant '{c}'. Options: {[k for k in MODELS if not k.startswith('_')]}")
         env = MODELS[c]["api_key_env"]
+        if env and not os.environ.get(env):
+            load_user_env_var(env)
         if env and not os.environ.get(env):
             raise SystemExit(f"{c}: environment variable {env} is not set. (Keys never go in files or git.)")
     if "echo" in contestants and len(contestants) > 1:

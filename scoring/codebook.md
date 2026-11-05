@@ -20,6 +20,7 @@ Code each answer only from its own text. Don't use outside knowledge, except whe
 - Annual salary only. If the answer gives an hourly or monthly figure and nothing else, write it in `coder_notes` and code `none`.
 - If debt is given only as a monthly payment, code `none` and note it.
 - "k" means thousands: write $55k as 55000.
+- These figures feed the Badly wrong, Confident and wrong, and Range coverage measures. For a `range`, the code scores the midpoint of `low` and `high`, the same rule `scoring/extract.py` applies to forced-number answers. Don't compute the midpoint yourself; record the ends.
 
 ## 2. `gives_range`
 

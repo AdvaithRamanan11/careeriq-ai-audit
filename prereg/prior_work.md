@@ -52,7 +52,7 @@ Read by Advaith, 2026-11-04. **Correction:** an earlier note described this as a
 
 | Source | From Advaith's notes | Bears on |
 |---|---|---|
-| Wang & Wang (2025). "Assessing consistency and reproducibility in the outputs of large language models: Evidence across diverse finance and accounting tasks." arXiv:2503.16974. | Consistency of LLM outputs on finance tasks. | H4 |
+| Wang & Wang (2025). "Assessing consistency and reproducibility in the outputs of large language models: Evidence across diverse finance and accounting tasks." arXiv:2503.16974. [Abstract](https://econpapers.repec.org/paper/arxpapers/2503.16974.htm) | **Abstract read by Advaith, 2026-11-04.** 50 repeated runs of three OpenAI models on five finance and accounting tasks. Consistency substantial but task-dependent: near-perfect on simple classification, more variable on complex tasks, much better when 3–5 runs are aggregated. | H4; supports using the 3-run mean per profile |
 | Geiger, O'Sullivan, Wang & Lo (2025). PLOS ONE. | Salary-negotiation advice bias audit varying gender, university and major; no ground truth. | H2 (school-type differences) |
 | Smith (2024). "'I'm Sorry, but I Can't Assist': Bias in Generative AI." RESPECT conference. | Uses College Scorecard institution naming; check relevance to refusals. | Refusal rate; H2 |
 

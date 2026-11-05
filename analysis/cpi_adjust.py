@@ -14,6 +14,10 @@ series ID CUUR0000SA0 (1982-84 = 100). Fetched from the BLS Public Data API v2.
 No key is needed for a single series (BLS_API_KEY is used if set).
 Debt is NOT adjusted: Scorecard reports debt as nominal dollars disbursed.
 
+For CareerIQ the target is not a query month but May 2025, the OEWS reference period of
+the BLS wages in salaries.json (D29: BLS series OEUN000000000000015125204 returns
+CareerIQ's $148,100 for 2025 only). Use the 2025-05 row of cpi_u.csv for that.
+
 Output: analysis/cpi_u.csv with columns year, month, cpi, factor_from_2024, fetched_at
 
 Usage: python analysis/cpi_adjust.py

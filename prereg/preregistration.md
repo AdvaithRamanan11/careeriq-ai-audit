@@ -1,10 +1,10 @@
 # Preregistration: Do AI chatbots give students accurate earnings and debt numbers for a specific college and major?
 
-> **DRAFT, revised 2026-11-04. For Advaith to review before filing on OSF.** Items marked **[CONFIRM]** need his decision. Once filed, this document is frozen. Any later change is logged as a deviation in `prereg/deviations.md` and reported in the write-up.
+> Final text, 2026-11-04. Once filed on OSF, this document is frozen. Any later change is logged as a deviation in `prereg/deviations.md` and reported in the write-up.
 
 **Author:** Advaith Ramanan (independent researcher)
-**Planned filing:** OSF Registries, by Nov 15, 2026, before the full chatbot data collection. Kept private (embargoed) until the study is complete.
-**Code and data:** github.com/AdvaithRamanan11/careeriq-ai-audit, at the commit hash recorded at filing.
+**Filing:** OSF Registries, November 2026, before the pilot and the full chatbot data collection. Kept private (embargoed) until the study is complete.
+**Code and data:** github.com/AdvaithRamanan11/careeriq-ai-audit, at the commit tagged `prereg-v1`.
 
 ---
 
@@ -233,7 +233,7 @@ The v1 and v2 code are tagged `v1-baseline` and `v2-hybrid`.
 - Scorecard field-of-study and institution files were explored for feasibility: column checks, row counts per cell, and the distribution of median debt values (e.g. that $27,000 is the most common median debt value).
 - CareerIQ estimates for all 150 profiles were computed and checked for correctness against an independent recomputation. **Only the number of matches was viewed.** During checking on 2026-11-02, CareerIQ and Scorecard values were displayed for 3 profiles of an earlier draft sample: biology at the University of North Texas, biology at Rice University, and teacher education at San Jacinto College. No other CareerIQ error was computed or viewed.
 - CareerIQ's "federal portion" of debt (§1.3, H7 secondary) was computed for the 150 profiles. Only CareerIQ-side facts were viewed (e.g. how many profiles sit at the federal cap); nothing was compared with Scorecard.
-- **No chatbot answers to any study prompt have been collected.** The pipeline was tested only with a fake "echo" model. **[Update at filing: state whether the pilot (§3.4) has run, and confirm that no pilot answer was compared with Scorecard.]**
+- **No chatbot answers to any prompt have been collected.** As of filing, the pilot (§3.4) has not run; no API keys had been set up. The pipeline was tested only with a fake "echo" model that returns made-up numbers.
 
 ---
 

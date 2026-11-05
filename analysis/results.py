@@ -385,7 +385,13 @@ def section_robustness(rep: Report, pl: pd.DataFrame, f: pd.DataFrame):
         wm, wlo, whi, wn = weighted_bootstrap_median(s.debt_abs, s.weight)
         rows.append({"contestant": c, "measure": "abs debt error, reweighted (f)", "n": wn, "median": wm, "ci_low": wlo, "ci_high": whi})
     rep.table("robustness", pd.DataFrame(rows)[["contestant", "measure", "n", "median", "ci_low", "ci_high"]])
-    rep.p("(c) App spot check vs API and (d) crosswalk sensitivity are reported in their own sections when those inputs exist (scoring/spot_check_template.csv; runners/run_careeriq.mjs with alternate crosswalks).")
+    sens = PROCESSED / "careeriq_crosswalk_sensitivity.csv"
+    if sens.exists():
+        rep.p("(d) Crosswalk sensitivity: CareerIQ re-run on the 150 profiles with the alternative job mappings (analysis/crosswalk_sensitivity.py). Debt is unaffected.")
+        rep.table("crosswalk_sensitivity", pd.read_csv(sens))
+    else:
+        rep.p("(d) Crosswalk sensitivity: **not yet available** (run analysis/crosswalk_sensitivity.py).")
+    rep.p("(c) App spot check vs API: reported when scoring/spot_check_template.csv has been filled in by hand.")
 
 
 def section_exploratory(rep: Report, pl: pd.DataFrame, f: pd.DataFrame):

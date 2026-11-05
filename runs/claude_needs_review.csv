@@ -20,7 +20,7 @@ Some context so you can plan:
 - Ask SJC about transfer partnerships and guaranteed admission agreements.
 - Consider working as a paraprofessional while finishing school.
 
-If you tell me the district you hope to work in or the university you'd transfer to, I can give a more accurate estimate.",,,,
+If you tell me the district you hope to work in or the university you'd transfer to, I can give a more accurate estimate.",51500,5000,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: first labelled range 48-55k; debt 'likely $0-$10,000' (extractor didn't know 'likely') -> midpoint"
 P022,2,more than one labelled number,"Earnings: $75,000-$85,000 per year (RN in El Paso, roughly $36-$41/hour) / Debt: $5,000-$10,000 (often less, or zero, with grants)
 
 A few notes behind those numbers:
@@ -42,7 +42,7 @@ To get numbers specific to you, fill out the FAFSA or TASFA, and use EPCC's net 
 Because I can't verify current wage data, treat these as estimates rather than guarantees.
 
 **Corrected format summary:**
-Earnings: $65,000-$80,000 / Debt: $0-$10,000",,,,
+Earnings: $65,000-$80,000 / Debt: $0-$10,000",80000,7500,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: two formatted lines; preregistered rule = first labelled number (75-85k / 5-10k)"
 P103,2,more than one labelled number,"Earnings: $45,000 / Debt: $25,000 (rough estimates)
 
 **Earnings:** Political science graduates from UT Austin typically start somewhere in the $40,000-$55,000 range. Outcomes vary a lot by path: jobs in government, campaigns, nonprofits, and advocacy often start lower (about $38,000-$50,000), while consulting, lobbying, or corporate roles can start higher. Many students also go on to law school or grad programs, which delays earnings but can raise them later.
@@ -58,7 +58,7 @@ P103,2,more than one labelled number,"Earnings: $45,000 / Debt: $25,000 (rough e
 - **UT Austin's Net Price Calculator** estimates your actual cost
 - **UT's career outcomes reports** from the university career center list salaries by major
 
-These are approximations, and I can't guarantee they match the latest data, so check the sources above before making decisions.",,,,
+These are approximations, and I can't guarantee they match the latest data, so check the sources above before making decisions.",45000,25000,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: first labelled numbers; later 'Earnings:' heading is prose"
 P106,1,more than one labelled number,"Earnings: $70,000 / Debt: $18,000
 
 These are rough estimates, not exact figures. Here is where they come from:
@@ -71,7 +71,7 @@ These are rough estimates, not exact figures. Here is where they come from:
 - Your concentration (finance, accounting, information systems, and so on) affects pay, with finance and tech-related roles often at the high end.
 - Local job market conditions, internships, and the Seattle cost of living matter too.
 
-For current numbers, check the College Scorecard (collegescorecard.ed.gov), Foster's career outcomes report, and UW's net price calculator.",,,,
+For current numbers, check the College Scorecard (collegescorecard.ed.gov), Foster's career outcomes report, and UW's net price calculator.",70000,18000,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: first labelled numbers"
 P106,3,more than one labelled number,"Earnings: $70,000 / Debt: $20,000
 
 These are rough estimates, since I can't look up current figures and they vary by year and by student.
@@ -87,7 +87,7 @@ These are rough estimates, since I can't look up current figures and they vary b
 - Internships, which heavily affect job offers
 - Whether you live on campus or with family
 
-For the most accurate picture, check the College Scorecard (collegescorecard.ed.gov), Foster's annual career outcomes report, and UW's net price calculator.",,,,
+For the most accurate picture, check the College Scorecard (collegescorecard.ed.gov), Foster's annual career outcomes report, and UW's net price calculator.",70000,20000,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: first labelled numbers"
 P109,3,no earnings number; no debt number,"I can't give you exact figures for Crown College, and I'd rather not invent them. There are also a couple of Crown Colleges (e.g., Crown College in Minnesota, a small Christian college, and others with similar names), so I'm not certain which one you mean.
 
 Earnings: $ I don't have a reliable figure for this school; national averages for new business grads are roughly $50,000-$60,000 / Debt: $ I don't have a reliable figure for this school; typical graduates of private four-year colleges borrow roughly $25,000-$35,000
@@ -101,7 +101,7 @@ To get real numbers for your school:
 3. **The career services office:** Ask for placement rates and starting salaries for business administration grads specifically.
 4. **The net price calculator** on Crown's website: This gives a personalized estimate of what you'd pay after grants and scholarships, which matters more than sticker price.
 
-Starting salaries also vary a lot by region and industry, and small schools may have limited data because few students graduate in each major. If you tell me which Crown College you mean, I can help you think through what questions to ask or how to compare it with other options.",,,,
+Starting salaries also vary a lot by region and industry, and small schools may have limited data because few students graduate in each major. If you tell me which Crown College you mean, I can help you think through what questions to ask or how to compare it with other options.",55000,30000,yes,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: blanks filled with 'I don't have a reliable figure for this school'; national range given alongside -> deviation 1 option (a). Also flags Crown College name ambiguity."
 P109,2,no earnings number; no debt number,"I can't give you reliable exact figures for Crown College, and part of the reason is that there are multiple schools with that name (for example, Crown College in St. Bonifacius, Minnesota, a private Christian college, and others). I don't want to hand you made-up numbers for a decision this big. Here is what I can offer:
 
 **Earnings: $ roughly 40,000-50,000 (typical range for new business grads from small private colleges; not a Crown-specific figure) / Debt: $ roughly 25,000-35,000 (typical median for private-college graduates who borrow; also not Crown-specific)**
@@ -120,7 +120,7 @@ These are ballpark national-style estimates, not data for Crown College or its b
 - Internships, which strongly affect starting pay
 - Your region, since salaries vary widely
 
-If you tell me which Crown College you mean and share any aid offer you've received, I can help you work out a rough monthly loan payment and whether the debt-to-salary ratio looks manageable. A common rule of thumb is to keep total borrowing below your expected first-year salary.",,,,
+If you tell me which Crown College you mean and share any aid offer you've received, I can help you work out a rough monthly loan payment and whether the debt-to-salary ratio looks manageable. A common rule of thumb is to keep total borrowing below your expected first-year salary.",45000,30000,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: BORDERLINE: blanks are filled ('$ roughly 40,000-50,000') with a caveat that it is not Crown-specific; extractor failed on '$ roughly' spacing. Proposed: not a format refusal. Advaith to rule."
 P117,1,more than one labelled number,"There's an important problem with the premise: WVU Institute of Technology (in Beckley, WV) has historically been an engineering-focused campus, but it has not been a place to major in chemical engineering. In recent years it has also been relocating/restructuring (it moved to Beckley's new campus arrangement with New River CTC), and its engineering offerings have been narrower, with programs like mechanical, electrical, and civil engineering. Chemical engineering is offered at WVU's main campus in Morgantown. Please verify with the school's current catalog, since offerings change.
 
 Here are rough estimates, and they depend on where you end up studying:
@@ -136,4 +136,4 @@ In the format you requested:
 Tips:
 - Check whether chemical engineering is actually offered at the Institute of Technology campus, or whether you'd need to do it at Morgantown.
 - Ask the school for its first-destination (career outcomes) data and average debt at graduation.
-- Look into the West Virginia PROMISE Scholarship and engineering co-ops, which can cut debt substantially and boost starting pay.",,,,
+- Look into the West Virginia PROMISE Scholarship and engineering co-ops, which can cut debt substantially and boost starting pay.",75000,25000,no,"PROPOSED by Claude 2026-11-05, pending Advaith's confirmation: first labelled range 70-80k / 20-30k; final summary line repeats the same figures. Answer disputes the premise (program may not exist at that campus)."

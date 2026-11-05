@@ -170,7 +170,8 @@ def score(f: pd.DataFrame, truth: pd.DataFrame) -> pd.DataFrame:
     cand = pd.DataFrame({"program": np.abs(pct_error(d.earnings, d.sc_earn_1yr)),
                          "national_field": np.abs(pct_error(d.earnings, d.sc_nat_earn_1yr)),
                          "school_all_majors": np.abs(pct_error(d.earnings, d.sc_school_all_majors_earn))})
-    d["closest_to"] = np.where(d.earnings.isna(), None, cand.idxmin(axis=1))
+    # rows with no earnings figure (refusals) have no closest value
+    d["closest_to"] = cand.apply(lambda r: r.idxmin() if r.notna().any() else None, axis=1)
     return d
 
 

@@ -10,7 +10,7 @@
 |---|---|---|---|
 | 2026-11-02 | Web search (Claude) | chatbot accuracy college earnings/debt; LLM financial advice audit | First pass |
 | 2026-11-04 | Google Scholar, "Since 2023" filter, by Advaith | `ChatGPT "College Scorecard"` (pages 1–2); `"large language model" college earnings accuracy`; `chatbot "student debt" advice accuracy`; `LLM "college choice" OR "college major" advice evaluation`; `"ChatGPT" "financial advice" accuracy benchmark`; `"generative AI" "return on investment" college students`; `LLM wage estimates OEWS` (page 1 each) | Main pass |
-| pending | SSRN, by hand | `ChatGPT financial advice` | **Still to do** |
+| 2026-11-04 | SSRN search box, by Advaith | `ChatGPT financial advice` | First page (results 1–50 of 2,455). No study compares chatbot figures against college earnings, debt or other outcome data. AI-related background only; see list below. Bahrami, Cookson & Moss and Lo & Ross also appeared (already listed). |
 
 ## Reading status
 
@@ -68,6 +68,16 @@ Read by Advaith, 2026-11-04. **Correction:** an earlier note described this as a
 - Lo & Ross (2024). "Can ChatGPT plan your retirement?" *Harvard Data Science Review*.
 - Takayanagi et al. (2025). "Are Generative AI Agents Effective Personalized Financial Advisors?" arXiv:2504.05862.
 - Gray literature, cite with caution: Figures (Feb 2026), company blog, ~10,000 ChatGPT salary benchmarks, ~17% average error.
+
+From the SSRN search (investment/retirement advice, financial literacy, bias; none compares chatbot figures with outcome data):
+
+- Bhargava (posted Oct 16, 2026). "Aligned to Protect, Misaligned to Advise: Financial Advice from LLMs." SSRN.
+- Niszczota & Abbas (2023). "GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice." SSRN.
+- Fieberg, Hornuf & Streich (2023). "Using GPT-4 for Financial Advice." CESifo Working Paper No. 10529.
+- Oehler & Horn (2024). "Does ChatGPT Provide Better Advice than Robo-Advisors?" *Finance Research Letters* 60.
+- Khan & Umer (2025). "Religious Bias in AI-Generated Financial Advice." SSRN.
+- Baeckström & Matkovskyy (2025). "Financial Advice Behavior: Humans Versus AI." SSRN.
+- Merkle (2025). "Investor Acceptance of AI Financial Advice." SSRN.
 
 ## Background on the answer key
 

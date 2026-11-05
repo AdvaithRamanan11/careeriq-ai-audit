@@ -98,6 +98,10 @@ for (const p of profiles) {
     job_id: p.job_id,
     ciq_salary: salary,
     ciq_debt: loan.totalLoan4Year,          // full net price x program years (assumes every dollar is borrowed)
+    // The part of that loan CareerIQ treats as federal Direct Loans: capped at $27,000
+    // (4-year) or $12,000 (2-year), the same caps calculateLoan uses internally but
+    // does not return. Compared with Scorecard's federal-loan median as a secondary H7 test.
+    ciq_debt_federal_portion: Math.min(loan.totalLoan4Year, loan.is2Year ? 12000 : 27000),
     ciq_monthly_payment: loan.monthlyPayment,
     // components, so every estimate can be checked by hand
     bls_base: job.blsBase,

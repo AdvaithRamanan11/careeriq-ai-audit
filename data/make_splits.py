@@ -9,11 +9,19 @@ Fix two random selections before any results are seen, so neither can be tuned l
    of the sorted school IDs, so it can be reproduced.
    -> data/processed/holdout_schools.csv
 
-2. Consumer-app spot check (PRD "Query protocol"):
+2. Consumer-app spot check (PRD "Query protocol"; D18):
    30 profiles, 2 from each of the 15 cells, picked with seed 2026. Advaith runs
-   these by hand in each chatbot's free app.
+   the real-student (R) prompt once per profile in each chatbot's free app.
    -> data/processed/spot_check_profiles.csv
-   -> scoring/spot_check_template.csv  (one row per profile x chatbot x prompt, to fill in)
+   -> scoring/spot_check_template.csv  (one row per profile x chatbot = 90 rows, to fill in)
+
+3. Pilot profiles (D17): 10 school-and-major rows that are NOT among the 150 study
+   profiles, used only to test parsing, refusals and cost. Drawn from the same
+   eligible pool as the study sample, minus the 150 sampled rows: 10 of the 15
+   cells are chosen by a seeded shuffle, and one random row is taken from each
+   (at most one per school). Scorecard values are deliberately left out of the
+   file, so no error can be computed from the pilot.
+   -> data/processed/pilot_profiles.csv
 
 Usage: python data/make_splits.py
 """
@@ -27,12 +35,38 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from lib.common import PROCESSED, REPO  # noqa: E402
-from data.sample_profiles import GROUPS, school_groups  # noqa: E402
+from data.sample_profiles import BANDS, GROUPS, eligible_rows, school_groups  # noqa: E402
 
 SEED = 2026
 HOLDOUT_SHARE = 0.20
 SPOT_PER_CELL = 2
 SPOT_CHATBOTS = ["chatgpt", "gemini", "claude"]
+PILOT_N = 10
+PILOT_COLS = ["profile_id", "school_group", "earnings_band", "UNITID", "INSTNM", "state",
+              "cip4", "CIPDESC", "prompt_major", "job_id"]
+
+
+def pilot(profiles: pd.DataFrame) -> pd.DataFrame:
+    rows, draft, _ = eligible_rows()
+    assert not draft, "crosswalk still has judgment rows"
+    sampled = set(zip(profiles.UNITID, profiles.cip4, profiles.credential_level))
+    rows = rows[[(u, c, l) not in sampled for u, c, l in zip(rows.UNITID, rows.CIPCODE, rows.CREDLEV)]]
+    cells = [(g, b) for g in GROUPS for b in BANDS]
+    rng = np.random.default_rng([SEED, 11])
+    chosen = [cells[i] for i in sorted(rng.permutation(len(cells))[:PILOT_N])]
+    picks, schools = [], set()
+    for gi, bi in [(GROUPS.index(g), BANDS.index(b)) for g, b in chosen]:
+        cands = rows[(rows.school_group == GROUPS[gi]) & (rows.earnings_band == BANDS[bi])]
+        cands = cands.sort_values(["UNITID", "CIPCODE"]).reset_index(drop=True)
+        order = np.random.default_rng([SEED, 11, gi, bi]).permutation(len(cands))
+        for k in order:
+            if cands.UNITID[k] not in schools:
+                picks.append(cands.iloc[k])
+                schools.add(cands.UNITID[k])
+                break
+    p = pd.DataFrame(picks).rename(columns={"CIPCODE": "cip4"})
+    p.insert(0, "profile_id", [f"X{i + 1:03d}" for i in range(len(p))])
+    return p[PILOT_COLS]
 
 
 def holdout() -> pd.DataFrame:
@@ -78,15 +112,23 @@ def main() -> int:
     rows = []
     for _, p in s.iterrows():
         for bot in SPOT_CHATBOTS:
-            for ptype in ("R", "F"):
-                rows.append({
-                    "profile_id": p.profile_id, "chatbot": bot, "prompt_type": ptype,
-                    "prompt_text": prompts[ptype].format(major=p.prompt_major, school=p.INSTNM),
-                    "date": "", "model_shown_in_app": "", "logged_in": "", "web_search_used": "",
-                    "response_text": "", "notes": "",
-                })
+            rows.append({
+                "profile_id": p.profile_id, "chatbot": bot, "prompt_type": "R",
+                "prompt_text": prompts["R"].format(major=p.prompt_major, school=p.INSTNM),
+                "date": "", "model_shown_in_app": "", "logged_in": "", "web_search_used": "",
+                "response_text": "", "notes": "",
+            })
     pd.DataFrame(rows).to_csv(REPO / "scoring" / "spot_check_template.csv", index=False, lineterminator="\n")
     print(f"Spot check: {len(s)} profiles -> {len(rows)} rows in scoring/spot_check_template.csv")
+
+    profiles["credential_level"] = profiles.credential.map({"Associate's Degree": "2", "Bachelor's Degree": "3"})
+    assert profiles.credential_level.notna().all()
+    x = pilot(profiles)
+    x.to_csv(PROCESSED / "pilot_profiles.csv", index=False, lineterminator="\n")
+    overlap = set(zip(x.UNITID, x.cip4)) & set(zip(profiles.UNITID, profiles.cip4))
+    assert not overlap, overlap
+    print(f"Pilot: {len(x)} profiles outside the study sample -> data/processed/pilot_profiles.csv "
+          f"(cells: {sorted(set(zip(x.school_group, x.earnings_band)))})")
     return 0
 
 

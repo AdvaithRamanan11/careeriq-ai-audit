@@ -43,24 +43,11 @@ from lib.common import PROCESSED, REPO  # noqa: E402
 from scoring.extract import extract  # noqa: E402
 
 MODELS = json.loads((REPO / "runners" / "models.json").read_text(encoding="utf-8"))
-PILOT_SEED = 2026
 
 
 def load_profiles(path: Path) -> list[dict]:
     with open(path, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
-
-
-def pilot_subset(profiles: list[dict], n: int = 10) -> list[dict]:
-    """10 profiles spread over the cells: the first profile of 10 different cells,
-    chosen with a fixed seed so the pilot set is reproducible."""
-    import random
-    cells = {}
-    for p in profiles:
-        cells.setdefault((p["school_group"], p["earnings_band"]), p)
-    keys = sorted(cells)
-    random.Random(PILOT_SEED).shuffle(keys)
-    return [cells[k] for k in sorted(keys[:n])]
 
 
 def done_keys(path: Path) -> set:
@@ -81,17 +68,23 @@ def main() -> int:
     ap.add_argument("--prompt-version", default="v1")
     ap.add_argument("--out-dir", type=Path, default=REPO / "runs")
     ap.add_argument("--limit", type=int, default=None, help="only the first N profiles")
-    ap.add_argument("--pilot", action="store_true", help="the fixed 10-profile pilot subset")
+    ap.add_argument("--pilot", action="store_true",
+                    help="use the 10 pilot profiles (outside the study sample) and write to runs/pilot")
     ap.add_argument("--workers", type=int, default=4, help="parallel calls per chatbot")
     args = ap.parse_args()
     args.out_dir = args.out_dir.resolve()
 
-    if args.profiles is None:
+    if args.pilot:
+        # Pilot profiles are drawn outside the 150 (data/make_splits.py) and carry no
+        # Scorecard values, so nothing from the pilot can be scored. Pilot output never
+        # lands in runs/ itself.
+        args.profiles = args.profiles or PROCESSED / "pilot_profiles.csv"
+        if args.out_dir == (REPO / "runs").resolve():
+            args.out_dir = REPO / "runs" / "pilot"
+    elif args.profiles is None:
         final = PROCESSED / "profiles.csv"
         args.profiles = final if final.exists() else PROCESSED / "profiles_DRAFT.csv"
     profiles = load_profiles(args.profiles)
-    if args.pilot:
-        profiles = pilot_subset(profiles)
     if args.limit:
         profiles = profiles[: args.limit]
 

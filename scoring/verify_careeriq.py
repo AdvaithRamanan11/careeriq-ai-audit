@@ -50,10 +50,13 @@ def main() -> int:
 
     bad = 0
     for _, e in est.iterrows():
-        s, d = expected(colleges.loc[e.UNITID], jobs.loc[e.job_id])
-        if s != e.ciq_salary or d != e.ciq_debt:
+        c = colleges.loc[e.UNITID]
+        s, d = expected(c, jobs.loc[e.job_id])
+        fed = min(d, 12000 if c.schoolType == "2-year" else 27000)
+        if s != e.ciq_salary or d != e.ciq_debt or fed != e.ciq_debt_federal_portion:
             bad += 1
-            print(f"MISMATCH {e.profile_id}: Node salary {e.ciq_salary} vs {s}; debt {e.ciq_debt} vs {d}")
+            print(f"MISMATCH {e.profile_id}: Node salary {e.ciq_salary} vs {s}; debt {e.ciq_debt} vs {d}; "
+                  f"federal portion {e.ciq_debt_federal_portion} vs {fed}")
     print(f"Independent recomputation: {len(est) - bad} of {len(est)} profiles match exactly.\n")
 
     merged = prof.merge(est, on=["profile_id", "UNITID", "job_id"])

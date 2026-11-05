@@ -1,0 +1,11 @@
+profile_id,school_group,earnings_band,UNITID,INSTNM,state,cip4,CIPDESC,prompt_major,job_id
+X001,Community college,Middle,433536,Herzing University-New Orleans,LA,5202,"Business Administration, Management and Operations.",business administration,operations_manager
+X002,Open admission,Middle,203368,John Carroll University,OH,4510,Political Science and Government.,political science,policy_analyst
+X003,Open admission,Top,228459,Texas State University,TX,1101,"Computer and Information Sciences, General.",computer and information sciences,software_engineer
+X004,Above average,Bottom,190637,CUNY Lehman College,NY,4201,"Psychology, General.",psychology,psychologist
+X005,Above average,Middle,233921,Virginia Polytechnic Institute and State University,VA,5214,Marketing.,marketing,marketing_manager
+X006,Selective,Bottom,217882,Clemson University,SC,4201,"Psychology, General.",psychology,psychologist
+X007,Selective,Top,234076,University of Virginia-Main Campus,VA,1409,Computer Engineering.,computer engineering,software_engineer
+X008,Elite,Bottom,215062,University of Pennsylvania,PA,2601,"Biology, General.",biology,biologist
+X009,Elite,Middle,168148,Tufts University,MA,0301,Natural Resources Conservation and Research.,environmental science and natural resources,environmental_scientist
+X010,Elite,Top,230959,Middlebury College,VT,1107,Computer Science.,computer science,software_engineer

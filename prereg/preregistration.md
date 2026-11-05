@@ -1,6 +1,6 @@
 # Preregistration: Do AI chatbots give students accurate earnings and debt numbers for a specific college and major?
 
-> **DRAFT, 2026-11-02. For Advaith to review before filing on OSF.** Items marked **[CONFIRM]** need his decision. Once filed, this document is frozen. Any later change is logged as a deviation in `prereg/deviations.md` and reported in the write-up.
+> **DRAFT, revised 2026-11-04. For Advaith to review before filing on OSF.** Items marked **[CONFIRM]** need his decision. Once filed, this document is frozen. Any later change is logged as a deviation in `prereg/deviations.md` and reported in the write-up.
 
 **Author:** Advaith Ramanan (independent researcher)
 **Planned filing:** OSF Registries, by Nov 15, 2026, before the full chatbot data collection. Kept private (embargoed) until the study is complete.
@@ -39,11 +39,11 @@ H1–H4 concern the three chatbots. H5–H7 concern CareerIQ. Each hypothesis ge
 | **H4** | The same forced-number prompt asked 3 times **varies by more than 5%**. | Coefficient of variation (CV) of the earnings figure across the 3 runs, per profile. Supported if the 95% bootstrap CI of the median CV across profiles lies entirely above 5%. Not supported if it lies entirely below. Otherwise inconclusive. |
 | **H5** | CareerIQ's flat entry discount (0.62 × BLS mean wage) **overestimates high-ceiling fields** (tech: CIP 11.xx and 14.09; finance: 52.08) and **underestimates compressed-pay fields** (nursing: 51.38; education: 13.xx). | Supported if CareerIQ's median signed earnings error is above 0 for high-ceiling fields and below 0 for compressed-pay fields, with both 95% bootstrap CIs excluding 0. Not supported if either CI lies entirely on the wrong side of 0. Otherwise inconclusive. |
 | **H6** | CareerIQ's all-majors school multiplier **inflates low-earning majors at high-earning schools**. | Among rows at schools with CareerIQ `earningsMultiplier` > 1.0: the median signed earnings error for the bottom earnings band minus that for the top band is above 0, with the 95% bootstrap CI excluding 0. Not supported if the CI lies entirely at or below 0. Otherwise inconclusive. |
-| **H7** | CareerIQ's debt estimate (full net price × program years) **overestimates debt**. | Supported if CareerIQ's median signed debt error is above 0 with the 95% bootstrap CI excluding 0. Not supported if the CI lies entirely at or below 0. Otherwise inconclusive. |
+| **H7** | CareerIQ's debt estimate (full net price × program years) **overestimates debt**. | **Primary:** CareerIQ's full estimate (`ciq_debt`) vs. Scorecard's median federal debt. Supported if the median signed debt error is above 0 with the 95% bootstrap CI excluding 0. Not supported if the CI lies entirely at or below 0. Otherwise inconclusive. **Secondary (descriptive, no decision rule):** the part of that estimate CareerIQ treats as federal Direct Loans, min(total loan, $27,000; $12,000 at 2-year schools), vs. the same Scorecard value. This asks whether the overestimate comes only from CareerIQ assuming money is borrowed beyond the federal caps. |
 
-**[CONFIRM: these thresholds (20%, 50%, 5%) are the PRD's starting values. Change them now or keep them. They can't change after filing.]**
+Thresholds (20%, 50%, 5%) are the PRD's starting values, confirmed on 2026-11-04 (D16).
 
-**Where H5–H7 are tested. [CONFIRM: this departs from the PRD.]** CareerIQ is deterministic and costs nothing to run, so H5–H7 are tested on **every eligible school-and-major row at the 80% training schools** (§2.4), not only the 150 profiles. The 150-profile results are also reported. Held-out schools are not used for H5–H7, because they're reserved for scoring the rebuilt CareerIQ. Rationale: the 150 profiles contain only 11 high-ceiling and 19 compressed-pay profiles, which is too few for a reliable test.
+**Where H5–H7 are tested (D19; a departure from the PRD).** CareerIQ is deterministic and costs nothing to run, so the **primary** test of H5–H7 uses **every eligible school-and-major row at the 80% training schools** (§2.4), not only the 150 profiles. H5–H7 are also reported on the 150 profiles for comparison. Held-out schools are not used for H5–H7, because they're reserved for scoring the rebuilt CareerIQ. Rationale: the 150 profiles contain only 11 high-ceiling and 19 compressed-pay profiles, which is too few for a reliable test. **None of these comparisons will be run before this document is filed.**
 
 ---
 
@@ -119,13 +119,13 @@ Each model's full set of 600 calls (150 profiles × 4) runs within one 7-day win
 
 `runners/run_careeriq.mjs` imports CareerIQ's own `calculations.js` from a clean checkout at `ba51be3`. It calls `calculateSalary` (Entry, Suburban, National) and `calculateLoan` (income bracket $48,001–$75,000, key `mid2`). The debt estimate is `totalLoan4Year`: net price × 2 or 4 years. An independent Python recomputation reproduces all 150 estimates exactly.
 
-### 3.4 Pilot
+### 3.4 Pilot (D17)
 
-Before the full run, a 10-profile pilot runs (first profile of 10 cells, seed 2026), giving 120 calls. It tests the pipeline and measures cost. Pilot answers are not analyzed. If the pilot leads to any prompt or code change, the change is versioned and recorded before the full run.
+Before the full run, a pilot of 10 profiles runs through the full pipeline (R once, F three times, per chatbot: 120 calls). **The pilot profiles are not among the 150 study profiles.** They were drawn from the same eligible pool minus the 150 sampled rows: 10 of the 15 cells were chosen by a seeded shuffle (seed 2026), and one row was drawn at random from each chosen cell, with at most one row per school (`data/make_splits.py`; `data/processed/pilot_profiles.csv`, SHA-256 `85461cef…addf`). The pilot file carries no Scorecard values, so no error can be computed from it. The pilot is used only to check number extraction, refusal handling, and cost. Pilot answers are stored in `runs/pilot/` and are never analyzed. If the pilot leads to any prompt or code change, the change is versioned and recorded here as an amendment before the full run.
 
-### 3.5 Consumer-app spot check
+### 3.5 Consumer-app spot check (D18)
 
-30 profiles (2 per cell, seed 2026; `data/processed/spot_check_profiles.csv`). Each profile gets the R and F prompts once in each chatbot's free app, with default settings and a fresh chat, logged by hand in `scoring/spot_check_template.csv`. That's 180 responses. It records whether the app used web search and which model the app displays. **[CONFIRM: R and F once each (180 responses), or F only (90 responses)?]**
+30 profiles (2 per cell, seed 2026; `data/processed/spot_check_profiles.csv`). Each profile gets the **R prompt once** in each chatbot's free app, with default settings and a fresh chat, logged by hand in `scoring/spot_check_template.csv`: 90 responses. It records whether the app used web search and which model the app displays.
 
 ### 3.6 Stopping rule
 
@@ -176,6 +176,7 @@ All intervals are 95% percentile bootstrap intervals with 2,000 resamples of pro
    - (b) Debt rerun against `DEBT_ALL_STGP_ANY_MDN`.
    - (c) App spot check vs. API answers for the same 30 profiles (descriptive).
    - (d) CareerIQ crosswalk sensitivity: psychology (CIP 42.01, 42.27, 42.28) re-mapped to market_researcher and hr_specialist, economics (45.06) to financial_analyst, and business (52.01, 52.02) to management_consultant.
+   - (e) **Inflation (D20).** Scorecard earnings are stated in 2024 dollars. Each chatbot answer is presumably in the dollars of the month it was asked. All earnings accuracy results are rerun with Scorecard earnings brought forward to the month of each query: value × CPI(query month) / CPI(2024 annual average), using BLS CPI-U, All items, U.S. city average, not seasonally adjusted, series `CUUR0000SA0` (`analysis/cpi_adjust.py`, which records the fetch date). If the query month's CPI isn't published yet at analysis time, the latest published month is used and this is noted. Debt is not adjusted, because Scorecard reports debt as the nominal dollars disbursed.
 8. **Exploratory.** Regression of log(absolute earnings error + 0.01) on school group, earnings band and contestant, with standard errors clustered by profile. Labeled exploratory.
 
 **Multiple comparisons.** Results are reported with CIs and the three-way decision rules above. No p-value correction is applied, and the write-up says so.
@@ -209,7 +210,8 @@ The v1 and v2 code are tagged `v1-baseline` and `v2-hybrid`.
 
 - Scorecard field-of-study and institution files were explored for feasibility: column checks, row counts per cell, and the distribution of median debt values (e.g. that $27,000 is the most common median debt value).
 - CareerIQ estimates for all 150 profiles were computed and checked for correctness against an independent recomputation. **Only the number of matches was viewed.** During checking on 2026-11-02, CareerIQ and Scorecard values were displayed for 3 profiles of an earlier draft sample: biology at the University of North Texas, biology at Rice University, and teacher education at San Jacinto College. No other CareerIQ error was computed or viewed.
-- **No chatbot answers to any study prompt have been collected.** The pipeline was tested only with a fake "echo" model.
+- CareerIQ's "federal portion" of debt (§1.3, H7 secondary) was computed for the 150 profiles. Only CareerIQ-side facts were viewed (e.g. how many profiles sit at the federal cap); nothing was compared with Scorecard.
+- **No chatbot answers to any study prompt have been collected.** The pipeline was tested only with a fake "echo" model. **[Update at filing: state whether the pilot (§3.4) has run, and confirm that no pilot answer was compared with Scorecard.]**
 
 ---
 

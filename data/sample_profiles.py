@@ -85,6 +85,33 @@ def band_cutoffs(bands: pd.DataFrame, fos: pd.DataFrame) -> pd.DataFrame:
     return b.groupby(["CREDLEV", "earnings_band"]).EARN_MDN_1YR_NAT.agg(["count", "min", "max"])
 
 
+def eligible_rows():
+    """Every Scorecard row that could be sampled, with its school group, earnings band and
+    CareerIQ job attached. Also used by data/make_splits.py to draw the pilot profiles.
+    Returns (rows, draft, unresolved_crosswalk_rows)."""
+    cw = pd.read_csv(CROSSWALK, dtype=str).fillna("")
+    unresolved = cw[cw.status == "judgment"]
+    draft = len(unresolved) > 0
+    cw_ok = cw[cw.status.isin(["proposed", "approved"]) & (cw.job_id != "")]
+
+    groups = school_groups()
+    fos = usable_fos(groups)
+    bands = earnings_bands()
+
+    df = fos.merge(groups[["UNITID", "name", "city", "state", "schoolType", "tier", "ownership",
+                           "school_group", "open_adm_by_flag", "ADM_RATE"]],
+                   on="UNITID", how="inner", validate="many_to_one")
+    df = df[df.school_group.notna()]
+    df = df[((df.school_group == "Community college") & (df.CREDLEV == CREDLEV_ASSOC)) |
+            ((df.school_group != "Community college") & (df.CREDLEV == CREDLEV_BACH))]   # D6
+    df = df.merge(bands, on=["CIPCODE", "CREDLEV"], how="left", validate="many_to_one")
+    df = df.merge(cw_ok[["cip4", "prompt_major", "major_id", "job_id", "status"]]
+                  .rename(columns={"cip4": "CIPCODE", "status": "crosswalk_status"}),
+                  on="CIPCODE", how="inner", validate="many_to_one")
+    assert df.earnings_band.notna().all()
+    return df, draft, unresolved
+
+
 def draw_cell(cands: pd.DataFrame, rng: np.random.Generator, max_per_field=None) -> pd.DataFrame:
     cands = cands.sort_values(["UNITID", "CIPCODE"]).reset_index(drop=True)
     order = rng.permutation(len(cands))
@@ -117,26 +144,7 @@ def main() -> int:
     global MAX_PER_FIELD
     if "--max-per-field" in sys.argv:
         MAX_PER_FIELD = int(sys.argv[sys.argv.index("--max-per-field") + 1])
-    cw = pd.read_csv(CROSSWALK, dtype=str).fillna("")
-    unresolved = cw[cw.status == "judgment"]
-    draft = len(unresolved) > 0
-    cw_ok = cw[cw.status.isin(["proposed", "approved"]) & (cw.job_id != "")]
-
-    groups = school_groups()
-    fos = usable_fos(groups)
-    bands = earnings_bands()
-
-    df = fos.merge(groups[["UNITID", "name", "city", "state", "schoolType", "tier", "ownership",
-                           "school_group", "open_adm_by_flag", "ADM_RATE"]],
-                   on="UNITID", how="inner", validate="many_to_one")
-    df = df[df.school_group.notna()]
-    df = df[((df.school_group == "Community college") & (df.CREDLEV == CREDLEV_ASSOC)) |
-            ((df.school_group != "Community college") & (df.CREDLEV == CREDLEV_BACH))]   # P3
-    df = df.merge(bands, on=["CIPCODE", "CREDLEV"], how="left", validate="many_to_one")
-    df = df.merge(cw_ok[["cip4", "prompt_major", "major_id", "job_id", "status"]]
-                  .rename(columns={"cip4": "CIPCODE", "status": "crosswalk_status"}),
-                  on="CIPCODE", how="inner", validate="many_to_one")
-    assert df.earnings_band.notna().all()
+    df, draft, unresolved = eligible_rows()
 
     profiles, counts = [], []
     for gi, g in enumerate(GROUPS):

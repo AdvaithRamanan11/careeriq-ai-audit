@@ -27,13 +27,15 @@ Every methods choice made before the preregistration goes here with its reason. 
 | D19 [O5] | 2026-11-04 | **H5–H7 primary test = all eligible rows at the 80% training schools,** run only after filing. Also reported on the 150 profiles. | The sample has too few tech/finance and nursing/education profiles for a reliable test. |
 | D20 | 2026-11-04 | **Inflation robustness check:** rerun earnings accuracy with Scorecard's 2024-dollar earnings brought to the query month using CPI-U (BLS series `CUUR0000SA0`, not seasonally adjusted, base = 2024 annual average). Debt not adjusted. | Chatbots answer in today's dollars; Scorecard reports 2024 dollars. The gap is about two years of inflation, which could be mistaken for chatbot error. |
 | D21 | 2026-11-04 | **Secondary H7 comparison:** CareerIQ's federal portion, min(total loan, $27,000; $12,000 at 2-year schools), vs. `DEBT_ALL_STGP_EVAL_MDN`. Descriptive, no decision rule. | Separates "CareerIQ assumes borrowing beyond the federal caps" from "CareerIQ's federal-loan assumption is itself off." |
+| D22 [O4] | 2026-11-04 | **Second coder: Safiullah Baig**, who had no role in the study design. Codes `caveat` and `source_type` on 50 random R answers from the codebook alone, with no discussion until finished. Named publicly only with their permission. | PRD open question, now settled. |
+| D23 | 2026-11-04 | **Pilot answers are read by Advaith and by Claude (the analysis assistant)** to check number extraction and refusals. Neither compares any pilot answer with Scorecard; the pilot file carries no Scorecard values. | Advaith chose both-of-us review. Stated in the preregistration. |
 
 ## Open
 
 | # | Question | Status |
 |---|---|---|
 | O7 | **Rule until filing:** no CareerIQ-vs-Scorecard or chatbot-vs-Scorecard errors are computed or viewed. Scoring code is tested only on fake data. `verify_careeriq.py` hides Scorecard values unless `--show-truth` is passed. | Protects the preregistration. Lifts once it's filed on OSF. |
-| O4 | **Second coder:** who codes 50 R answers independently? | Advaith to find someone (PRD open question). Still open as of 2026-11-04. |
+| O8 | **Safiullah Baig's permission** to be named in the public write-up and repo. | Advaith to ask. Until then, public materials say "a second coder with no role in the study design." |
 
 ## API cost estimate (checked 2026-11-02, to confirm after the pilot)
 

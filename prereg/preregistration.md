@@ -121,7 +121,7 @@ Each model's full set of 600 calls (150 profiles × 4) runs within one 7-day win
 
 ### 3.4 Pilot (D17)
 
-Before the full run, a pilot of 10 profiles runs through the full pipeline (R once, F three times, per chatbot: 120 calls). **The pilot profiles are not among the 150 study profiles.** They were drawn from the same eligible pool minus the 150 sampled rows: 10 of the 15 cells were chosen by a seeded shuffle (seed 2026), and one row was drawn at random from each chosen cell, with at most one row per school (`data/make_splits.py`; `data/processed/pilot_profiles.csv`, SHA-256 `85461cef…addf`). The pilot file carries no Scorecard values, so no error can be computed from it. The pilot is used only to check number extraction, refusal handling, and cost. Pilot answers are stored in `runs/pilot/` and are never analyzed. If the pilot leads to any prompt or code change, the change is versioned and recorded here as an amendment before the full run.
+Before the full run, a pilot of 10 profiles runs through the full pipeline (R once, F three times, per chatbot: 120 calls). **The pilot profiles are not among the 150 study profiles.** They were drawn from the same eligible pool minus the 150 sampled rows: 10 of the 15 cells were chosen by a seeded shuffle (seed 2026), and one row was drawn at random from each chosen cell, with at most one row per school (`data/make_splits.py`; `data/processed/pilot_profiles.csv`, SHA-256 `85461cef…addf`). The pilot file carries no Scorecard values, so no error can be computed from it. The pilot is used only to check number extraction, refusal handling, and cost. Pilot answers are stored in `runs/pilot/` and are never analyzed. They are read by the author and by Claude (the analysis assistant used to build the pipeline) to check number extraction and refusal handling; neither compares any pilot answer with Scorecard. If the pilot leads to any prompt or code change, the change is versioned and recorded here as an amendment before the full run.
 
 ### 3.5 Consumer-app spot check (D18)
 
@@ -157,7 +157,7 @@ F answers are parsed by `scoring/extract.py`. Every answer it can't parse cleanl
 
 ### 4.3 Second coder
 
-A second person codes `caveat` and `source_type` for 50 randomly drawn R answers (seed 2026) using only the codebook. Cohen's kappa is computed on the original codes before any discussion. Disagreements are then resolved by discussion, and every change is logged. **[CONFIRM: name the second coder.]**
+The second coder is **Safiullah Baig**, who had no role in the study design. They code `caveat` and `source_type` for 50 randomly drawn R answers (seed 2026) using only the codebook, with no discussion with the author until finished. Cohen's kappa is computed on the original codes before any discussion. Disagreements are then resolved by discussion, and every change is logged. The second coder is named in public materials only with their permission; otherwise they are described as "a second coder with no role in the study design."
 
 ---
 

@@ -15,8 +15,8 @@
 ## Reading status
 
 - **Read in full (by Claude, 2026-11-04):** the two Urban Institute reports.
-- **Not retrievable by automated fetch (HTTP 403):** the OpenAI post and the SSRN paper. Notes on these come from Advaith's search summaries and must be checked against the originals before being cited.
-- **Snippets only:** everything under "Background." Read the abstract before citing any of them.
+- **Read (by Advaith, 2026-11-04):** the OpenAI post and the Bahrami, Cookson & Moss SSRN paper. Both block automated fetching, so the notes below are Advaith's.
+- **Snippets only:** everything under "Relevant to specific hypotheses" and "Background." Read the abstract before citing any of them.
 
 ## Closest work
 
@@ -42,13 +42,16 @@ Read in full.
 
 ### OpenAI (Mar 17, 2026). *Equipping workers with insights about compensation.* [Post](https://openai.com/index/equipping-workers-with-insights-about-compensation/)
 
-**Not read** (403 on fetch). From Advaith's notes: about 3 million US wage-related messages per day; GPT-5.4's answers judged "highly accurate" against 2024 BLS OEWS medians, at the occupation level; evaluation run by OpenAI. Must be read in a browser before citing. Relevant as (a) evidence of scale of demand, (b) an occupation-level, maker-run accuracy claim that this study's program-level, independent design can be contrasted with.
+Read by Advaith, 2026-11-04. The post says Americans send nearly 3 million messages a day to ChatGPT about wages, compensation or earnings (from a privacy-preserving classifier analysis), and that GPT-5.4, tested against 2024 OEWS median wages at national and metro levels, was "highly accurate" in the observed sample. It does not give a percent-error figure and the evaluation was run by OpenAI. Relevant as (a) evidence of the scale of demand, (b) an occupation-level, maker-run accuracy claim that this study's program-level, independent design can be contrasted with. Cite no more than this.
+
+### Bahrami, Cookson & Moss (2026). *Judge for Yourself: Confidence Beats Accuracy in AI Financial Advice.* SSRN 7602338, posted Oct 12, 2026.
+
+Read by Advaith, 2026-11-04. **Correction:** an earlier note described this as an app-vs-API comparison. It is not. It analyzes 3,060 Chatbot Arena votes on financial questions. Users prefer confident, actionable advice; the more accurate answer wins only 52.2% of decisive votes; when one answer has a serious error and the other is correct, users choose the flawed one 47.8% of the time. Bears on H3 and the confident-and-wrong measure, not on the app spot check.
 
 ## Relevant to specific hypotheses (abstracts not yet read)
 
 | Source | From Advaith's notes | Bears on |
 |---|---|---|
-| Bahrami, Cookson & Moss (2026). "Judge for Yourself: Confidence Beats Accuracy in AI Financial Advice." SSRN 7602338. | ChatGPT app vs API of the same model; confidence vs accuracy. **Not retrievable by fetch (403).** | Spot check (app vs API); confident-and-wrong measure |
 | Wang & Wang (2025). "Assessing consistency and reproducibility in the outputs of large language models: Evidence across diverse finance and accounting tasks." arXiv:2503.16974. | Consistency of LLM outputs on finance tasks. | H4 |
 | Geiger, O'Sullivan, Wang & Lo (2025). PLOS ONE. | Salary-negotiation advice bias audit varying gender, university and major; no ground truth. | H2 (school-type differences) |
 | Smith (2024). "'I'm Sorry, but I Can't Assist': Bias in Generative AI." RESPECT conference. | Uses College Scorecard institution naming; check relevance to refusals. | Refusal rate; H2 |

@@ -1,24 +1,71 @@
-# Prior work: search log
-
-**Status:** first pass only (web search, 2026-11-02). I have not read these sources in full; the notes below come from search summaries and must be checked against each source before anything is cited in the write-up.
+# Prior work: search log and reading notes
 
 **Question:** Has anyone already scored chatbot earnings or debt estimates for specific college programs against federal outcome data?
 
-**Answer so far:** Nothing found that does this. The closest work is listed below. One web search is not a literature review: before filing the preregistration, search Google Scholar, SSRN, arXiv and ERIC for combinations of: *ChatGPT / LLM / chatbot* + *College Scorecard / earnings / salary / student debt / ROI / college choice*.
+**Short answer:** Not with a numeric answer key. The Urban Institute's 2026 evaluation is the closest work and is the study we position against (see the preregistration, §1.1). It used expert ratings on curated prompts and explicitly disclaims being a quantitative benchmark. An OpenAI blog post evaluated wage answers at the occupation level, by the model's maker. Everything else found is about general financial advice, bias, or college advising without ground truth.
 
-## Closest work found
+## Search log
 
-| Source | What it did (from search summary; verify) | How this study differs |
+| Date | Where | Terms | Scope |
+|---|---|---|---|
+| 2026-11-02 | Web search (Claude) | chatbot accuracy college earnings/debt; LLM financial advice audit | First pass |
+| 2026-11-04 | Google Scholar, "Since 2023" filter, by Advaith | `ChatGPT "College Scorecard"` (pages 1–2); `"large language model" college earnings accuracy`; `chatbot "student debt" advice accuracy`; `LLM "college choice" OR "college major" advice evaluation`; `"ChatGPT" "financial advice" accuracy benchmark`; `"generative AI" "return on investment" college students`; `LLM wage estimates OEWS` (page 1 each) | Main pass |
+| pending | SSRN, by hand | `ChatGPT financial advice` | **Still to do** |
+
+## Reading status
+
+- **Read in full (by Claude, 2026-11-04):** the two Urban Institute reports.
+- **Not retrievable by automated fetch (HTTP 403):** the OpenAI post and the SSRN paper. Notes on these come from Advaith's search summaries and must be checked against the originals before being cited.
+- **Snippets only:** everything under "Background." Read the abstract before citing any of them.
+
+## Closest work
+
+### Tyagi, Blagg & Gutierrez (May 2026). *Evaluating How LLMs Handle Education and Workforce Pathway Data.* Urban Institute. [PDF](https://www.urban.org/sites/default/files/2026-05/Evaluating-How-LLMs-Handle-Education-and-Workforce-Pathway-Data-final.pdf)
+
+Read in full. Facts with page numbers:
+
+- **Design (pp. 3–4):** 100 curated prompts across 10 topics (including "institution-level earnings" and "student loans") and 6 personas (including "career or education advisor"). Sent to GPT-5.2, Claude Sonnet 4.5 and Gemini 3 Flash, "the models a user would likely encounter when interacting with the free versions … as of early 2026," programmatically, "as a standalone query with no custom system prompt, conversation history, or tool access beyond what each model provides by default." Evaluators blinded to model. 300 responses.
+- **Scoring (p. 4):** subject-matter experts, six dimensions (accuracy, clarity, completeness, confidence, reference, responsibility), four-point scale (no / minor / significant / critical issues), plus diagnostic tags. No numeric comparison to a ground-truth dataset.
+- **Self-description (p. 5):** "not to rank specific models, serve as a quantitative benchmark, or make broad claims about LLM capabilities"; prompts "deliberately constructed"; figures "should be read as patterns, rather than generalizable performance metrics."
+- **Findings:** only 16% of responses had no accuracy issues; 34% critical (p. 7). Specific-retrieval prompts (a particular school, district or institution): 58% critical (p. 5). References: significant or critical issues in >60% of responses; "the presence of a citation in a response was also not associated with higher accuracy" (p. 7). "Inaccurate statistics were typically presented in the same tone, precision, and level of apparent certainty as accurate ones" (p. 7). Scope substitution: models "defaulting to national trends when asked about specific schools or institutions" (p. 2, p. 8). Caveats "frequently missing" (p. 2, p. 8). Example: "a response provided Purdue engineering graduate earnings figures that were tens of thousands of dollars below the actual values reported in the College Scorecard" (p. 7). GPT-5.2 asked clarifying questions more often, "making direct cross-model comparisons difficult to interpret" (p. 5).
+- **Relevance to this study:** same three vendors, same "default experience" query setup, overlapping topics. Differs in: expert ratings vs numeric error; curated vs sampled prompts; institution-level vs program-level; no selectivity breakdown; one response per prompt; no preregistration mentioned.
+
+### Tyagi, Blagg & Gutierrez (Oct 2026). *Improving How LLMs Handle Education and Workforce Pathway Data.* Urban Institute. [PDF](https://www.urban.org/sites/default/files/2026-10/Improving-How-LLMs-Handle-Education-and-Workforce-Pathway-Data.pdf)
+
+Read in full.
+
+- **Design (pp. 2, 5):** same 100 prompts, Claude Sonnet 4.5 only (same version as baseline), August 2026, with Urban's two MCP servers connected and expanded documentation. Evaluators were *not* blinded this round. "Extended thinking disabled, as in the baseline" (note 4).
+- **Findings:** no-accuracy-issue responses rose from 16% to 61%; critical from 35% to 7% (p. 2). Institution-specific prompts: critical issues 42% → 11% (p. 7). References no-issues 11% → 84%; confidence no-issues 26% → 71% (p. 2). Cost ~12× per response, median 37 seconds (p. 9).
+- **Remaining errors were judgment calls (p. 8):** e.g. one response "returned institution-level earnings data for undergraduates and described its figures as graduates' earnings, even though they also include students who did not complete a degree." Urban's portal has program-level earnings only from PSEO; the Education-to-Workforce tool names College Scorecard as a source.
+- **Free-tier access (note 8):** "As of September 2026, ChatGPT supported custom MCP servers only through developer mode, which was not available on its free plan"; Claude's free plan allowed one custom connector; Gemini's custom connections limited to adults in the US.
+- **Relevance:** shows that anchoring on data works, but through a route most students can't use. Motivates CareerIQ v2's approach (federal data inside a free tool, no setup).
+
+### OpenAI (Mar 17, 2026). *Equipping workers with insights about compensation.* [Post](https://openai.com/index/equipping-workers-with-insights-about-compensation/)
+
+**Not read** (403 on fetch). From Advaith's notes: about 3 million US wage-related messages per day; GPT-5.4's answers judged "highly accurate" against 2024 BLS OEWS medians, at the occupation level; evaluation run by OpenAI. Must be read in a browser before citing. Relevant as (a) evidence of scale of demand, (b) an occupation-level, maker-run accuracy claim that this study's program-level, independent design can be contrasted with.
+
+## Relevant to specific hypotheses (abstracts not yet read)
+
+| Source | From Advaith's notes | Bears on |
 |---|---|---|
-| [Education Next, "Hey, Claude, Should I Go To College?"](https://www.educationnext.org/hey-claude-should-i-go-to-college/) | Asked ChatGPT, Gemini, Claude and Grok "Should I go to college?" and judged the advice qualitatively | This study scores numbers for specific programs against federal data |
-| [The College Investor, "ChatGPT On Student Loans"](https://thecollegeinvestor.com/63419/chatgpt-on-student-loans/) | Tested ChatGPT on loan repayment scenarios; found outdated program advice | Repayment advice, not program-level earnings/debt |
-| [DIY Investor, AI chatbots and student loan advice](https://www.diyinvestor.net/how-ai-chatbots-may-mislead-student-loan-advice/) | 21 prompts across ChatGPT, Perplexity, Grok, judged by experts | Expert judgment, not scored against data |
-| [UIS study of ChatGPT financial advice](https://www.uis.edu/news/study-uis-finance-professors-examines-chatgpts-ability-provide-financial-advice) | Finance professors examined ChatGPT's personal finance advice; found calculation mistakes | General finance |
-| [Gies/Illinois, "Can ChatGPT give good financial advice?"](https://giesbusiness.illinois.edu/news/2024/10/16/can-chatgpt-give-good-financial-advice) | Related coverage of the same line of work | General finance |
-| ["Can AI Help with Your Personal Finances?" (arXiv)](https://arxiv.org/html/2412.19784v3) | Accuracy audit of several LLMs on personal-finance questions | General finance; not program-level |
-| [de Silva et al., "AI Financial Advice: Supply, Demand, and Life Cycle Implications"](https://www.timdesilva.me/files/papers/llm_advice.pdf) | Tested LLM financial advice with human-written prompts; quality depends on prompt detail | Relevant to why this study uses a plain, student-style prompt |
-| [InvestmentNews: AI chatbots wrong on most financial answers](https://www.investmentnews.com/fintech/ai-chatbots-give-wrong-financial-answers-most-of-the-time-study-finds/268267) | Coverage of an industry benchmark (Saturn) across 17 models | Commercial benchmark; peer review unclear |
+| Bahrami, Cookson & Moss (2026). "Judge for Yourself: Confidence Beats Accuracy in AI Financial Advice." SSRN 7602338. | ChatGPT app vs API of the same model; confidence vs accuracy. **Not retrievable by fetch (403).** | Spot check (app vs API); confident-and-wrong measure |
+| Wang & Wang (2025). "Assessing consistency and reproducibility in the outputs of large language models: Evidence across diverse finance and accounting tasks." arXiv:2503.16974. | Consistency of LLM outputs on finance tasks. | H4 |
+| Geiger, O'Sullivan, Wang & Lo (2025). PLOS ONE. | Salary-negotiation advice bias audit varying gender, university and major; no ground truth. | H2 (school-type differences) |
+| Smith (2024). "'I'm Sorry, but I Can't Assist': Bias in Generative AI." RESPECT conference. | Uses College Scorecard institution naming; check relevance to refusals. | Refusal rate; H2 |
+
+## Background (snippets only)
+
+- Hean, Saha & Saha (2024/2025). "Can AI Help with Your Personal Finances?" arXiv:2412.19784.
+- Sorokovikova et al. (2025). "Surface Fairness, Deep Bias." arXiv:2506.10491.
+- Lekan & Pardos (2025). "AI-Augmented Advising." *Journal of Learning Analytics* 12(1).
+- Zheng (2025). "Dissecting bias of ChatGPT in college major recommendations." *Information Technology and Management*.
+- Fletcher (2024). "ChatGPT, Finances, and Degree Attainment." IEEE Frontiers in Education.
+- Ngangoue, Schotter & Wang (2026). "Life's Big Decisions in the Age of AI." SSRN.
+- Choukhmane, de Silva, Lin et al. (2026). "AI financial advice: Supply, demand, and life cycle implications." SSRN.
+- Lo & Ross (2024). "Can ChatGPT plan your retirement?" *Harvard Data Science Review*.
+- Takayanagi et al. (2025). "Are Generative AI Agents Effective Personalized Financial Advisors?" arXiv:2504.05862.
+- Gray literature, cite with caution: Figures (Feb 2026), company blog, ~10,000 ChatGPT salary benchmarks, ~17% average error.
 
 ## Background on the answer key
 
-- [College Scorecard field of study documentation](https://collegescorecard.ed.gov/files/FieldOfStudyDataDocumentation.pdf) (Version: October 2026) — definitions and limitations used throughout.
+- [College Scorecard field of study documentation](https://collegescorecard.ed.gov/files/FieldOfStudyDataDocumentation.pdf) (Version: October 2026): definitions and limitations used throughout.
